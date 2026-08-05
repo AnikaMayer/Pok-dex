@@ -1,0 +1,23 @@
+@media screen and (max-width: 509px) {
+    .pokemon_container {
+        .pokemon_card {
+            width: 100%;
+        }
+    }
+}
+
+@media screen and (min-width: 510px) and (max-width: 767px) {
+    .pokemon_container {
+        .pokemon_card {
+            width: 50%;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .pokemon_container {
+        .pokemon_card {
+            width: 30%;
+        }
+    }
+}
