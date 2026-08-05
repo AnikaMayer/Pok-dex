@@ -1,14 +1,14 @@
-function renderPkmCardsTemplate(singlePokemon, i) {
+function renderPkmCardsTemplate(singlePokemon, i, pkmImg) {
     return /*html*/ `
         <button>
-            <div>
-                <img src="" alt="">
+            <div id="pkm_img_${i}">
+                <img src="${pkmImg}" alt="">
             </div>
             <div>
                 <p>${singlePokemon.id}</p>
                 <h2>${singlePokemon.name}</h2>
             </div>
-            <div id="pkm_${i}"></div>
+            <div id="pkm_type_${i}"></div>
         </button>
     `;
 }

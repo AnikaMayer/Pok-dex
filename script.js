@@ -10,25 +10,6 @@ async function init() {
     console.log(POKEMON_DETAILS);
 }
 
-function renderPkmCards(pokemonList) {
-    POKEMON_CARDS.innerHTML = "";
-
-    for (let i = 0; i < pokemonList.length; i++) {
-        const singlePokemon = pokemonList[i];
-        POKEMON_CARDS.innerHTML += renderPkmCardsTemplate(singlePokemon, i);
-
-        renderTypes(singlePokemon, i);
-    }
-}
-
-function renderTypes(singlePokemon, i) {
-    const pkmTypesRef = document.getElementById(`pkm_${i}`);
-
-    for (let y = 0; y < singlePokemon.types.length; y++) {
-        pkmTypesRef.innerHTML += renderTypesTemplate(singlePokemon, y);
-    }
-}
-
 async function getData() {
     const response = await fetch(`${POKEAPI}/pokemon?limit=20&offset=0`);
     const responseFromJson = await response.json();
@@ -45,5 +26,25 @@ async function getPkmInfo() {
         POKEMON_DETAILS.push(responseFromJson);
 
         renderPkmCards(POKEMON_DETAILS);
+    }
+}
+
+function renderPkmCards(pokemonList) {
+    POKEMON_CARDS.innerHTML = "";
+
+    for (let i = 0; i < pokemonList.length; i++) {
+        const singlePokemon = pokemonList[i];
+        const pkmImg = singlePokemon.sprites.other["official-artwork"].front_default;
+        POKEMON_CARDS.innerHTML += renderPkmCardsTemplate(singlePokemon, i, pkmImg);
+
+        renderTypes(singlePokemon, i);
+    }
+}
+
+function renderTypes(singlePokemon, i) {
+    const pkmTypesRef = document.getElementById(`pkm_type_${i}`);
+
+    for (let y = 0; y < singlePokemon.types.length; y++) {
+        pkmTypesRef.innerHTML += renderTypesTemplate(singlePokemon, y);
     }
 }
