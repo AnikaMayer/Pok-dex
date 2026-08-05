@@ -17,7 +17,17 @@
     <body onload="init()">
         <header>header</header>
         <main>
-            <section id="pokemon_cards"></section>
+            <section class="pokemon_container">
+                <div class="search_bar">
+                    <button>surprise</button>
+                    <input type="text" placeholder="search" />
+                    <button>sort by</button>
+                </div>
+                <section id="pokemon_box" class="pokemon_wrap"></section>
+                <div class="load_more_box">
+                    <button>Load More</button>
+                </div>
+            </section>
         </main>
         <footer>footer</footer>
     </body>
