@@ -15,7 +15,17 @@ function renderPkmCards(pokemonList) {
 
     for (let i = 0; i < pokemonList.length; i++) {
         const singlePokemon = pokemonList[i];
-        POKEMON_CARDS.innerHTML += renderPkmCardsTemplate(singlePokemon);
+        POKEMON_CARDS.innerHTML += renderPkmCardsTemplate(singlePokemon, i);
+
+        renderTypes(singlePokemon, i);
+    }
+}
+
+function renderTypes(singlePokemon, i) {
+    const pkmTypesRef = document.getElementById(`pkm_${i}`);
+
+    for (let y = 0; y < singlePokemon.types.length; y++) {
+        pkmTypesRef.innerHTML += renderTypesTemplate(singlePokemon, y);
     }
 }
 
