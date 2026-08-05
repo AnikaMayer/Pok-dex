@@ -1,4 +1,4 @@
-const POKEMON_CARDS = document.getElementById("pokemon_cards");
+const POKEMON_CARDS = document.getElementById("pokemon_box");
 const POKEAPI = "https://pokeapi.co/api/v2";
 const ALL_POKEMON = [];
 const POKEMON_DETAILS = [];
@@ -47,4 +47,12 @@ function renderTypes(singlePokemon, i) {
     for (let y = 0; y < singlePokemon.types.length; y++) {
         pkmTypesRef.innerHTML += renderTypesTemplate(singlePokemon, y);
     }
+}
+
+function capitalizeLetter(index) {
+    return String(index).charAt(0).toUpperCase() + String(index).slice(1);
+}
+
+function padNumber(index) {
+    return index.toString().padStart(5, "0");
 }

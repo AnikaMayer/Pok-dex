@@ -1,12 +1,12 @@
 function renderPkmCardsTemplate(singlePokemon, i, pkmImg) {
     return /*html*/ `
-        <button>
-            <div id="pkm_img_${i}">
-                <img src="${pkmImg}" alt="">
+        <button class="pokemon_card">
+            <div id="pkm_img_${i}" class="pkm_img_box">
+                <img src="${pkmImg}" alt="${singlePokemon.name}">
             </div>
             <div>
-                <p>${singlePokemon.id}</p>
-                <h2>${singlePokemon.name}</h2>
+                <p>Nr. ${padNumber(singlePokemon.id)}</p>
+                <h2>${capitalizeLetter(singlePokemon.name)}</h2>
             </div>
             <div id="pkm_type_${i}"></div>
         </button>
@@ -16,7 +16,7 @@ function renderPkmCardsTemplate(singlePokemon, i, pkmImg) {
 function renderTypesTemplate(singlePokemon, y) {
     return /*html*/ `
         <div>
-            <p>${singlePokemon.types[y].type.name}</p>
+            <p>${capitalizeLetter(singlePokemon.types[y].type.name)}</p>
         </div>
     `;
 }
