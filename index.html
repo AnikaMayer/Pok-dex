@@ -19,15 +19,21 @@
         <main>
             <section class="pokemon_container">
                 <div class="search_bar">
-                    <button>surprise</button>
+                    <!-- <button>surprise</button> -->
                     <input type="text" placeholder="search" />
-                    <button>sort by</button>
+                    <!-- <button>sort by</button> -->
                 </div>
                 <section id="pokemon_box" class="pokemon_wrap"></section>
                 <div class="load_more_box">
                     <button>Load More</button>
                 </div>
             </section>
+            <dialog
+                aria-label="show Pokemon details"
+                id="details_dialog"
+                class="dialog_container"
+                onclick="closeDialog()"
+            ></dialog>
         </main>
         <footer>footer</footer>
     </body>
