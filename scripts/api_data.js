@@ -23,9 +23,9 @@ async function getPkmInfo(currOff) {
         const pkmTypes = getTypes(respFromJson);
 
         const pokemonObject = createPkmObj(respFromJson, pkmImg, pkmTypes);
-        CURRENT_PKM.push(pokemonObject);
+        ALL_PKM.push(pokemonObject);
     }
-    renderPkmCards(CURRENT_PKM);
+    renderPkmCards(ALL_PKM);
 }
 
 // create an object only with infos needed to render small cards

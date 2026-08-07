@@ -5,22 +5,20 @@ let currentOffset = 0;
 const POKEMON_URL = [];
 const ALL_INFO = [];
 
-const CURRENT_PKM = [];
+const ALL_PKM = [];
 const PKM_DETAILS = [];
 
 const IMG_CACHE = {};
 const EVO_CHAIN = [];
 
-const START = 1;
-const STOP = START + 20;
 let searchedPokemon = [];
 
 async function init() {
     await getData();
-    const currOff = POKEMON_URL;
+    currOff = POKEMON_URL;
     await getPkmInfo(currOff);
     console.log(ALL_INFO);
-    console.log(CURRENT_PKM);
+    console.log(ALL_PKM);
     console.log(PKM_DETAILS);
     console.log(IMG_CACHE);
 
@@ -87,7 +85,7 @@ function padNumber(index) {
 // #region dialog
 
 function openDialog(i) {
-    const singlePokemon = CURRENT_PKM[i];
+    const singlePokemon = ALL_PKM[i];
 
     DETAILS_DIALOG.showModal();
     DETAILS_DIALOG.innerHTML = dialogTemplate(i);

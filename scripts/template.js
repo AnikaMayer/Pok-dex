@@ -19,6 +19,12 @@ function renderTypesTemplate(singlePokemon, y) {
     `;
 }
 
+function noResultsTemplate(searchInput) {
+    return /*html*/ `
+        <p>"Oops! The Pokéball missed! Your search for „{searchInput}" didn´t catch any Pokémon. Try again!"</p>
+    `;
+}
+
 function dialogTemplate(i) {
     return /*html*/ `
         <section class="dialog_box">
