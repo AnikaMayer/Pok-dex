@@ -1,4 +1,4 @@
-// #region createCardsArray
+// #region ArrayCards
 
 // get url for every pokemon leading to more info
 async function getData() {
@@ -8,11 +8,13 @@ async function getData() {
     for (let j = 0; j < responseFromJson.results.length; j++) {
         POKEMON_URL.push(responseFromJson.results[j].url);
     }
+
+    currentOffset = currentOffset + 20;
 }
 
 // use pkm-url to fetch those infos and push all info into an Array to work with later
-async function getPkmInfo() {
-    for (const pkmUrl of POKEMON_URL) {
+async function getPkmInfo(currOff) {
+    for (const pkmUrl of currOff) {
         const resp = await fetch(`${pkmUrl}`);
         const respFromJson = await resp.json();
         ALL_INFO.push(respFromJson);
@@ -21,9 +23,9 @@ async function getPkmInfo() {
         const pkmTypes = getTypes(respFromJson);
 
         const pokemonObject = createPkmObj(respFromJson, pkmImg, pkmTypes);
-        ALL_POKEMON.push(pokemonObject);
+        CURRENT_PKM.push(pokemonObject);
     }
-    renderPkmCards(ALL_POKEMON);
+    renderPkmCards(CURRENT_PKM);
 }
 
 // create an object only with infos needed to render small cards
@@ -38,7 +40,7 @@ function createPkmObj(respFromJson, pkmImg, pkmTypes) {
 
 //#endregion
 
-// #region createDetailsArray
+// #region ArrayDetails
 
 // use Array from above with all Info to find info needed for detail-view and push into Details-Array for dialog
 async function getMoreDetails() {
@@ -52,7 +54,7 @@ async function getMoreDetails() {
         const pkmCtgry = getCtgry(respFromJson);
 
         const detailsObj = createDetailsObj(index, pkmDescr, pkmImg, pkmTypes, pkmCtgry, pkmAblts);
-        POKEMON_DETAILS.push(detailsObj);
+        PKM_DETAILS.push(detailsObj);
     }
 }
 

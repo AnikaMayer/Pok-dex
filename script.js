@@ -2,21 +2,26 @@ const POKEMON_CARDS = document.getElementById("pokemon_box");
 const DETAILS_DIALOG = document.getElementById("details_dialog");
 const POKEAPI = "https://pokeapi.co/api/v2";
 const POKEMON_URL = [];
-
+let currentOffset = 0;
 const ALL_INFO = [];
+
+const CURRENT_PKM = [];
+const PKM_DETAILS = [];
+
 const IMG_CACHE = {};
-const ALL_POKEMON = [];
-const POKEMON_DETAILS = [];
 const EVO_CHAIN = [];
 
+const START = 1;
+const STOP = START + 20;
 let searchedPokemon = [];
 
 async function init() {
     await getData();
-    await getPkmInfo();
+    const currOff = POKEMON_URL;
+    await getPkmInfo(currOff);
     console.log(ALL_INFO);
-    console.log(ALL_POKEMON);
-    console.log(POKEMON_DETAILS);
+    console.log(CURRENT_PKM);
+    console.log(PKM_DETAILS);
     console.log(IMG_CACHE);
 
     await getMoreDetails();
@@ -79,10 +84,26 @@ function padNumber(index) {
 
 //#endregion
 
+// #region loadMorePkm
+
+async function loadMorePkm() {
+    const resp = await fetch(`${POKEAPI}/pokemon?limit=20&offset=${currentOffset}`);
+    const respFromJson = await resp.json();
+
+    for (let j = 0; j < respFromJson.results.length; j++) {
+        POKEMON_URL.push(respFromJson.results[j].url);
+    }
+    const currOff = POKEMON_URL.slice(currentOffset);
+    getPkmInfo(currOff);
+    currentOffset = currentOffset + 20;
+}
+
+//#endregion
+
 // #region dialog
 
 function openDialog(i) {
-    const singlePokemon = ALL_POKEMON[i];
+    const singlePokemon = CURRENT_PKM[i];
 
     DETAILS_DIALOG.showModal();
     DETAILS_DIALOG.innerHTML = dialogTemplate(i);
