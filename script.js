@@ -1,8 +1,8 @@
 const POKEMON_CARDS = document.getElementById("pokemon_box");
 const DETAILS_DIALOG = document.getElementById("details_dialog");
 const POKEAPI = "https://pokeapi.co/api/v2";
-const POKEMON_URL = [];
 let currentOffset = 0;
+const POKEMON_URL = [];
 const ALL_INFO = [];
 
 const CURRENT_PKM = [];
@@ -80,22 +80,6 @@ function capitalizeLetter(index) {
 
 function padNumber(index) {
     return index.toString().padStart(5, "0");
-}
-
-//#endregion
-
-// #region loadMorePkm
-
-async function loadMorePkm() {
-    const resp = await fetch(`${POKEAPI}/pokemon?limit=20&offset=${currentOffset}`);
-    const respFromJson = await resp.json();
-
-    for (let j = 0; j < respFromJson.results.length; j++) {
-        POKEMON_URL.push(respFromJson.results[j].url);
-    }
-    const currOff = POKEMON_URL.slice(currentOffset);
-    getPkmInfo(currOff);
-    currentOffset = currentOffset + 20;
 }
 
 //#endregion

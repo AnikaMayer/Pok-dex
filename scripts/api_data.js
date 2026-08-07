@@ -9,7 +9,7 @@ async function getData() {
         POKEMON_URL.push(responseFromJson.results[j].url);
     }
 
-    currentOffset = currentOffset + 20;
+    currentOffset = currentOffset + 20; // offset being adjusted to load more later
 }
 
 // use pkm-url to fetch those infos and push all info into an Array to work with later
@@ -36,6 +36,23 @@ function createPkmObj(respFromJson, pkmImg, pkmTypes) {
         img: pkmImg,
         type: pkmTypes,
     };
+}
+
+//#endregion
+
+// #region loadMorePkm
+
+// adjusted offset to fetch new url for next pokemon, then push into first url-Array
+async function loadMorePkm() {
+    const resp = await fetch(`${POKEAPI}/pokemon?limit=20&offset=${currentOffset}`);
+    const respFromJson = await resp.json();
+
+    for (let j = 0; j < respFromJson.results.length; j++) {
+        POKEMON_URL.push(respFromJson.results[j].url);
+    }
+    const currOff = POKEMON_URL.slice(currentOffset); // slice with start = adjusted offset -> parameter for getInfo-function
+    getPkmInfo(currOff);
+    currentOffset = currentOffset + 20; // adjust offset for next load (again +20)
 }
 
 //#endregion
