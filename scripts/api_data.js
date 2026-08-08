@@ -105,7 +105,9 @@ function getAblty(pkmIndex) {
 }
 
 function getDescr(respFromJson) {
-    return respFromJson.flavor_text_entries.find((element) => element.language.name === "en").flavor_text;
+    const descr = respFromJson.flavor_text_entries.find((element) => element.language.name === "en").flavor_text;
+
+    return descr.replace(/\f/g, " ").replace(/\n/g, " ");
 }
 
 function getCtgry(respFromJson) {
