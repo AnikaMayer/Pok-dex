@@ -91,7 +91,6 @@ async function getMoreDetails(singlePokemon) {
 
     const detailsObj = createDetailsObj(pkmData, pkmDescr, pkmImg, pkmTypes, pkmCtgry, pkmAblts, evoChain);
     PKM_DETAILS.push(detailsObj);
-    console.log(evoChain);
 }
 
 // helper-functions for each detail
@@ -160,6 +159,32 @@ function createDetailsObj(pkmData, pkmDescr, pkmImg, pkmTypes, pkmCtgry, pkmAblt
             speed: getStats("speed", pkmData),
         },
     };
+}
+
+//#endregion
+
+// #region getGlobalData
+
+async function getAllPkmNames() {
+    const response = await fetch(`${POKEAPI}/pokemon?limit=1025&offset=0`);
+    const responseFromJson = await response.json();
+
+    ALL_NAMES.push(...responseFromJson.results);
+}
+
+async function getGlobalPkmInfo(matches) {
+    searchedGlobal.length = 0;
+    for (const pkm of matches) {
+        const resp = await fetch(`${pkm.url}`);
+        const respFromJson = await resp.json();
+        ALL_INFO.push(respFromJson);
+
+        const pkmImg = respFromJson.sprites.other["official-artwork"].front_default;
+        const pkmTypes = getTypes(respFromJson);
+
+        const pokemonObject = createPkmObj(respFromJson, pkmImg, pkmTypes);
+        searchedGlobal.push(pokemonObject);
+    }
 }
 
 //#endregion

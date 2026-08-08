@@ -21,7 +21,7 @@ function renderTypesTemplate(singlePokemon, y) {
 
 function noResultsTemplate(searchInput) {
     return /*html*/ `
-        <p>"Oops! The Pokéball missed! Your search for „{searchInput}" didn´t catch any Pokémon. Try again!"</p>
+        <p>"Oops! The Pokéball missed! Your search for „${searchInput}" didn´t catch any Pokémon. Try again!"</p>
     `;
 }
 
@@ -29,10 +29,10 @@ function dialogTemplate(details) {
     return /*html*/ `
         <section class="dialog_box" onclick="bubblingProtection(event)">
             <header class="dialog_header">
-                <button onclick="goToPrevPokemon()">PREV</button>
+                <button id="prev_btn" onclick="goToPrevPokemon()">PREV</button>
                 <h2>${capitalizeLetter(details.name)}</h2>
                 <p>Nr. ${padNumber(details.id)}</p>
-                <button onclick="goToNextPokemon()">NEXT</button>
+                <button id="next_btn" onclick="goToNextPokemon()">NEXT</button>
             </header>
             <div class="dialog_content">
                 <div id="dialog_img_${details.id}"></div>

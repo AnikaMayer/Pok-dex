@@ -4,6 +4,7 @@ const POKEAPI = "https://pokeapi.co/api/v2";
 let currentOffset = 0;
 const POKEMON_URL = [];
 const ALL_INFO = [];
+const ALL_NAMES = [];
 
 const ALL_PKM = [];
 const PKM_DETAILS = [];
@@ -12,11 +13,12 @@ const IMG_CACHE = {};
 const EVO_CHAIN = [];
 
 let searchedPokemon = [];
+let searchedGlobal = [];
 let currentPokemon = 0;
 
 async function init() {
     showLoadingScreen();
-    await getData();
+    await Promise.all([getData(), getAllPkmNames()]);
     currOff = POKEMON_URL;
     await getPkmInfo(currOff);
     hideLoadingScreen();
@@ -83,9 +85,16 @@ function padNumber(pkmId) {
 // #region dialog
 
 async function openDialog(pkmId) {
-    const activeList = searchedPokemon.length > 0 ? searchedPokemon : ALL_PKM;
+    let activeList;
+    if (searchedPokemon.length > 0) {
+        activeList = searchedPokemon;
+    } else if (searchedGlobal.length > 0) {
+        activeList = searchedGlobal;
+    } else {
+        activeList = ALL_PKM;
+    }
     currentPokemon = activeList.findIndex((pkm) => pkm.id === pkmId);
-    const singlePokemon = ALL_PKM.find((pkm) => pkm.id === pkmId);
+    const singlePokemon = ALL_PKM.find((pkm) => pkm.id === pkmId) || searchedGlobal.find((pkm) => pkm.id === pkmId);
     await getMoreDetails(singlePokemon);
 
     const details = PKM_DETAILS.find((pkmDetail) => pkmDetail.id === pkmId);
@@ -94,13 +103,20 @@ async function openDialog(pkmId) {
     DETAILS_DIALOG.classList.add("opened");
     loadDialogImg(singlePokemon, details);
     renderEvoChain(details);
+
+    const prevBtn = document.getElementById("prev_btn");
+    const nextBtn = document.getElementById("next_btn");
+    prevBtn.disabled = activeList.length <= 1;
+    nextBtn.disabled = activeList.length <= 1;
 }
 
 async function goToNextPokemon() {
-    let activeList = [];
+    let activeList;
 
     if (searchedPokemon.length > 0) {
         activeList = searchedPokemon;
+    } else if (searchedGlobal.length > 0) {
+        activeList = searchedGlobal;
     } else {
         activeList = ALL_PKM;
     }
@@ -114,10 +130,12 @@ async function goToNextPokemon() {
 }
 
 async function goToPrevPokemon() {
-    let activeList = [];
+    let activeList;
 
     if (searchedPokemon.length > 0) {
         activeList = searchedPokemon;
+    } else if (searchedGlobal.length > 0) {
+        activeList = searchedGlobal;
     } else {
         activeList = ALL_PKM;
     }
