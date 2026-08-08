@@ -18,9 +18,9 @@ async function init() {
     await getData();
     currOff = POKEMON_URL;
     await getPkmInfo(currOff);
-    await getMoreDetails();
     hideLoadingScreen();
     renderPkmCards(ALL_PKM);
+    console.log(ALL_INFO);
 }
 
 // #region renderCards
@@ -82,10 +82,11 @@ function padNumber(pkmId) {
 
 // #region dialog
 
-function openDialog(pkmId) {
+async function openDialog(pkmId) {
     const singlePokemon = ALL_PKM.find((pkm) => pkm.id === pkmId);
-    const details = PKM_DETAILS.find((pkmDetail) => pkmDetail.id === pkmId);
+    await getMoreDetails(singlePokemon);
 
+    const details = PKM_DETAILS.find((pkmDetail) => pkmDetail.id === pkmId);
     DETAILS_DIALOG.showModal();
     DETAILS_DIALOG.innerHTML = dialogTemplate(details);
     DETAILS_DIALOG.classList.add("opened");

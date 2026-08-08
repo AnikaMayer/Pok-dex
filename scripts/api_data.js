@@ -72,19 +72,21 @@ function hideLoadingScreen() {
 // #region ArrayDetails
 
 // use Array from above with all Info to find info needed for detail-view and push into Details-Array for dialog
-async function getMoreDetails() {
-    for (let index = 0; index < ALL_INFO.length; index++) {
-        const pkmImg = ALL_INFO[index].sprites.other["official-artwork"].front_default;
-        const pkmTypes = getTypes(ALL_INFO[index]);
-        const pkmAblts = getAblty(ALL_INFO[index]);
-        const resp = await fetch(ALL_INFO[index].species.url);
-        const respFromJson = await resp.json();
-        const pkmDescr = getDescr(respFromJson);
-        const pkmCtgry = getCtgry(respFromJson);
-
-        const detailsObj = createDetailsObj(index, pkmDescr, pkmImg, pkmTypes, pkmCtgry, pkmAblts);
-        PKM_DETAILS.push(detailsObj);
+async function getMoreDetails(singlePokemon) {
+    if (PKM_DETAILS.find((pkmDetail) => pkmDetail.id === singlePokemon.id)) {
+        return;
     }
+    const pkmData = ALL_INFO.find((pkm) => pkm.id === singlePokemon.id);
+    const pkmImg = pkmData.sprites.other["official-artwork"].front_default;
+    const pkmTypes = getTypes(pkmData);
+    const pkmAblts = getAblty(pkmData);
+    const resp = await fetch(pkmData.species.url);
+    const respFromJson = await resp.json();
+    const pkmDescr = getDescr(respFromJson);
+    const pkmCtgry = getCtgry(respFromJson);
+
+    const detailsObj = createDetailsObj(pkmData, pkmDescr, pkmImg, pkmTypes, pkmCtgry, pkmAblts);
+    PKM_DETAILS.push(detailsObj);
 }
 
 // helper-functions for each detail
@@ -108,29 +110,29 @@ function getCtgry(respFromJson) {
     return respFromJson.genera.find((element) => element.language.name === "en").genus;
 }
 
-function getStats(statName, index) {
-    return ALL_INFO[index].stats.find((element) => element.stat.name === statName).base_stat;
+function getStats(statName, pkmData) {
+    return pkmData.stats.find((element) => element.stat.name === statName).base_stat;
 }
 
 // object to push into Array
-function createDetailsObj(index, pkmDescr, pkmImg, pkmTypes, pkmCtgry, pkmAblts) {
+function createDetailsObj(pkmData, pkmDescr, pkmImg, pkmTypes, pkmCtgry, pkmAblts) {
     return {
         description: pkmDescr,
-        name: ALL_INFO[index].name,
-        id: ALL_INFO[index].id,
+        name: pkmData.name,
+        id: pkmData.id,
         img: pkmImg,
         type: pkmTypes,
-        height: ALL_INFO[index].height,
-        weight: ALL_INFO[index].weight,
+        height: pkmData.height,
+        weight: pkmData.weight,
         category: pkmCtgry,
         abilities: pkmAblts,
         stats: {
-            hp: getStats("hp", index),
-            attack: getStats("attack", index),
-            defense: getStats("defense", index),
-            sp_attack: getStats("special-attack", index),
-            sp_defense: getStats("special-defense", index),
-            speed: getStats("speed", index),
+            hp: getStats("hp", pkmData),
+            attack: getStats("attack", pkmData),
+            defense: getStats("defense", pkmData),
+            sp_attack: getStats("special-attack", pkmData),
+            sp_defense: getStats("special-defense", pkmData),
+            speed: getStats("speed", pkmData),
         },
     };
 }
