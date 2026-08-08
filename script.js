@@ -14,15 +14,13 @@ const EVO_CHAIN = [];
 let searchedPokemon = [];
 
 async function init() {
+    showLoadingScreen();
     await getData();
     currOff = POKEMON_URL;
     await getPkmInfo(currOff);
-    console.log(ALL_INFO);
-    console.log(ALL_PKM);
-    console.log(PKM_DETAILS);
-    console.log(IMG_CACHE);
-
     await getMoreDetails();
+    hideLoadingScreen();
+    renderPkmCards(ALL_PKM);
 }
 
 // #region renderCards
@@ -32,15 +30,15 @@ async function renderPkmCards(pokemonList) {
 
     for (let i = 0; i < pokemonList.length; i++) {
         const singlePokemon = pokemonList[i];
-        POKEMON_CARDS.innerHTML += renderPkmCardsTemplate(singlePokemon, i);
+        POKEMON_CARDS.innerHTML += renderPkmCardsTemplate(singlePokemon);
 
-        renderTypes(singlePokemon, i);
-        await loadImg(singlePokemon, i);
+        renderTypes(singlePokemon);
+        await loadImg(singlePokemon);
     }
 }
 
-function renderTypes(singlePokemon, i) {
-    const pkmTypesRef = document.getElementById(`pkm_type_${i}`);
+function renderTypes(singlePokemon) {
+    const pkmTypesRef = document.getElementById(`pkm_type_${singlePokemon.id}`);
 
     for (let y = 0; y < singlePokemon.type.length; y++) {
         pkmTypesRef.innerHTML += renderTypesTemplate(singlePokemon, y);
@@ -48,16 +46,16 @@ function renderTypes(singlePokemon, i) {
 }
 
 // create img-cache for not needing to use img-url
-async function loadImg(singlePokemon, i) {
-    const pkmImgRef = document.getElementById(`pkm_img_${i}`);
-    const pkmImgLoad = await getImg(singlePokemon, i);
+async function loadImg(singlePokemon) {
+    const pkmImgRef = document.getElementById(`pkm_img_${singlePokemon.id}`);
+    const pkmImgLoad = await getImg(singlePokemon);
     pkmImgRef.appendChild(pkmImgLoad);
 }
 
-function getImg(singlePokemon, i) {
+function getImg(singlePokemon) {
     return new Promise((resolve, reject) => {
         if (IMG_CACHE[singlePokemon.id]) {
-            resolve(IMG_CACHE[singlePokemon.id]);
+            resolve(IMG_CACHE[singlePokemon.id].cloneNode());
             return;
         }
 
@@ -65,38 +63,38 @@ function getImg(singlePokemon, i) {
         img.src = `${singlePokemon.img}`;
         img.onload = () => {
             IMG_CACHE[singlePokemon.id] = img;
-            resolve(img);
+            resolve(img.cloneNode());
         };
         img.onerror = reject;
     });
 }
 
 // format letters and numbers
-function capitalizeLetter(index) {
-    return String(index).charAt(0).toUpperCase() + String(index).slice(1);
+function capitalizeLetter(pkmName) {
+    return String(pkmName).charAt(0).toUpperCase() + String(pkmName).slice(1);
 }
 
-function padNumber(index) {
-    return index.toString().padStart(5, "0");
+function padNumber(pkmId) {
+    return pkmId.toString().padStart(5, "0");
 }
 
 //#endregion
 
 // #region dialog
 
-function openDialog(i) {
-    const singlePokemon = ALL_PKM[i];
+function openDialog(pkmId) {
+    const singlePokemon = ALL_PKM.find((pkm) => pkm.id === pkmId);
+    const details = PKM_DETAILS.find((pkmDetail) => pkmDetail.id === pkmId);
 
     DETAILS_DIALOG.showModal();
-    DETAILS_DIALOG.innerHTML = dialogTemplate(i);
+    DETAILS_DIALOG.innerHTML = dialogTemplate(details);
     DETAILS_DIALOG.classList.add("opened");
-    loadDialogImg(singlePokemon, i);
-    getMoreDetails();
+    loadDialogImg(singlePokemon, details);
 }
 
-async function loadDialogImg(singlePokemon, i) {
-    const dialogImgRef = document.getElementById(`dialog_img_${i}`);
-    const pkmImgLoad = await getImg(singlePokemon, i);
+async function loadDialogImg(singlePokemon, details) {
+    const dialogImgRef = document.getElementById(`dialog_img_${details.id}`);
+    const pkmImgLoad = await getImg(singlePokemon);
     dialogImgRef.appendChild(pkmImgLoad);
 }
 

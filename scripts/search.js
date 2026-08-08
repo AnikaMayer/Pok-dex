@@ -1,29 +1,12 @@
-// async function getData() {
-//     const response = await fetch(`${POKEAPI}/pokemon?limit=20&offset=0`);
-//     const responseFromJson = await response.json();
-
-//     for (let j = 0; j < responseFromJson.results.length; j++) {
-//         POKEMON_URL.push(responseFromJson.results[j].url);
-//     }
-
-//     currentOffset = currentOffset + 20; // offset being adjusted to load more later
-// }
-
-// function checkSearchInput() {
-//     const searchInputRef = document.getElementById("search_input");
-//     const searchInput = searchInputRef.value;
-//     const searchBtn = document.getElementById("search_button");
-//     searchBtn.disabled = searchInput.length < 3;
-
-//     searchPkm(searchInput);
-// }
-
+// check condition for input-value, enable button and hint-message
 function checkSearchInput() {
     const searchInputRef = document.getElementById("search_input");
     const searchInput = searchInputRef.value;
     const searchBtn = document.getElementById("search_button");
+    const loadBtn = document.getElementById("load_btn");
     const hintMsg = document.getElementById("hint_msg");
     searchBtn.disabled = searchInput.length < 3;
+    loadBtn.classList.toggle("hide_btn", searchInput.length >= 1);
     hintMsg.classList.toggle("hidden", searchInput.length === 0 || searchInput.length >= 3);
 
     if (searchInput.length === 0) {
@@ -31,6 +14,7 @@ function checkSearchInput() {
     }
 }
 
+// filter array for input-value and render Cards with result or give an error message
 function searchPkm() {
     const searchInputRef = document.getElementById("search_input");
     const searchInput = searchInputRef.value;

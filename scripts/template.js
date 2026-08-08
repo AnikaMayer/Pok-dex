@@ -1,12 +1,12 @@
-function renderPkmCardsTemplate(singlePokemon, i) {
+function renderPkmCardsTemplate(singlePokemon) {
     return /*html*/ `
-        <button aria-label="show Pokemon details" class="pokemon_card" onclick="openDialog(${i})">
-            <div id="pkm_img_${i}" class="pkm_img_box"></div>
+        <button aria-label="show Pokemon details" class="pokemon_card" onclick="openDialog(${singlePokemon.id})">
+            <div id="pkm_img_${singlePokemon.id}" class="pkm_img_box"></div>
             <div class="pkm_name">
                 <p>Nr. ${padNumber(singlePokemon.id)}</p>
                 <h2>${capitalizeLetter(singlePokemon.name)}</h2>
             </div>
-            <div id="pkm_type_${i}" class="pkm_type"></div>
+            <div id="pkm_type_${singlePokemon.id}" class="pkm_type"></div>
         </button>
     `;
 }
@@ -25,17 +25,17 @@ function noResultsTemplate(searchInput) {
     `;
 }
 
-function dialogTemplate(i) {
+function dialogTemplate(details) {
     return /*html*/ `
         <section class="dialog_box">
             <header class="dialog_header">
-                <h2>${capitalizeLetter(PKM_DETAILS[i].name)}</h2>
-                <p>Nr. ${padNumber(PKM_DETAILS[i].id)}</p>
+                <h2>${capitalizeLetter(details.name)}</h2>
+                <p>Nr. ${padNumber(details.id)}</p>
             </header>
             <div class="dialog_content">
-                <div id="dialog_img_${i}"></div>
+                <div id="dialog_img_${details.id}"></div>
                 <div class="main_info">
-                    <p class="description">${PKM_DETAILS[i].description}</p>
+                    <p class="description">${details.description}</p>
                     <div>
                         <button class="male"></button>
                         <button class="female"></button>
@@ -44,21 +44,21 @@ function dialogTemplate(i) {
                         <ul>
                             <li>
                                 <span class="attribute_title">Height:</span>
-                                <span class="attribute_value">${PKM_DETAILS[i].height}</span>
+                                <span class="attribute_value">${details.height}</span>
                             </li>
                             <li>
                                 <span class="attribute_title">Weight:</span>
-                                <span class="attribute_value">${PKM_DETAILS[i].weight}</span>
+                                <span class="attribute_value">${details.weight}</span>
                             </li>
                         </ul>
                         <ul>
                             <li>
                                 <span class="attribute_title">Category:</span>
-                                <span class="attribute_value">${PKM_DETAILS[i].category}</span>
+                                <span class="attribute_value">${details.category}</span>
                             </li>
                             <li>
                                 <span class="attribute_title">Abilities:</span>
-                                <span class="attribute_value">${PKM_DETAILS[i].abilities}</span>
+                                <span class="attribute_value">${details.abilities}</span>
                             </li>
                         </ul>
                     </div>
@@ -70,12 +70,12 @@ function dialogTemplate(i) {
                 </div>
                 <div class="stats">
                     <h3>Stats</h3>
-                    <p>HP <span>${PKM_DETAILS[i].stats.hp}</span></p>
-                    <p>Attack <span>${PKM_DETAILS[i].stats.attack}</span></p>
-                    <p>Defense <span>${PKM_DETAILS[i].stats.defense}</span></p>
-                    <p>Sp.-Attack <span>${PKM_DETAILS[i].stats.sp_attack}</span></p>
-                    <p>Sp.-Defense <span>${PKM_DETAILS[i].stats.sp_defense}</span></p>
-                    <p>Speed <span></span>${PKM_DETAILS[i].stats.speed}</p>
+                    <p>HP <span>${details.stats.hp}</span></p>
+                    <p>Attack <span>${details.stats.attack}</span></p>
+                    <p>Defense <span>${details.stats.defense}</span></p>
+                    <p>Sp.-Attack <span>${details.stats.sp_attack}</span></p>
+                    <p>Sp.-Defense <span>${details.stats.sp_defense}</span></p>
+                    <p>Speed <span></span>${details.stats.speed}</p>
                 </div>
             </div>
             <footer class="dialog_footer"></footer>

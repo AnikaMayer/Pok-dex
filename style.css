@@ -111,18 +111,18 @@ main {
             }
         }
     }
+}
 
-    .load_more_box {
-        width: 80%;
-        height: 150px;
-        background-color: rgba(0, 0, 0, 0.103);
-        display: flex;
-        justify-content: center;
-        align-items: center;
+.load_more_box {
+    width: 80%;
+    height: 150px;
+    background-color: rgba(0, 0, 0, 0.103);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-        button {
-            width: 25%;
-            height: 50px;
-        }
+    button {
+        width: 25%;
+        height: 50px;
     }
 }

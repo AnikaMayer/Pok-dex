@@ -25,7 +25,6 @@ async function getPkmInfo(currOff) {
         const pokemonObject = createPkmObj(respFromJson, pkmImg, pkmTypes);
         ALL_PKM.push(pokemonObject);
     }
-    renderPkmCards(ALL_PKM);
 }
 
 // create an object only with infos needed to render small cards
@@ -46,13 +45,26 @@ function createPkmObj(respFromJson, pkmImg, pkmTypes) {
 async function loadMorePkm() {
     const resp = await fetch(`${POKEAPI}/pokemon?limit=20&offset=${currentOffset}`);
     const respFromJson = await resp.json();
+    showLoadingScreen();
 
     for (let j = 0; j < respFromJson.results.length; j++) {
         POKEMON_URL.push(respFromJson.results[j].url);
     }
     const currOff = POKEMON_URL.slice(currentOffset); // slice with start = adjusted offset -> parameter for getInfo-function
-    getPkmInfo(currOff);
+    await getPkmInfo(currOff);
+    hideLoadingScreen();
+    renderPkmCards(ALL_PKM);
     currentOffset = currentOffset + 20; // adjust offset for next load (again +20)
+}
+
+function showLoadingScreen() {
+    const loadingSpin = document.getElementById("loading_screen");
+    loadingSpin.classList.remove("hide_spin");
+}
+
+function hideLoadingScreen() {
+    const loadingSpin = document.getElementById("loading_screen");
+    loadingSpin.classList.add("hide_spin");
 }
 
 //#endregion

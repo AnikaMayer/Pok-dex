@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="./styles/fonts.css" />
         <link rel="stylesheet" href="./styles/variables.css" />
         <link rel="stylesheet" href="./styles/type_colors.css" />
+        <link rel="stylesheet" href="./styles/assets.css" />
         <link rel="stylesheet" href="style.css" />
         <link rel="stylesheet" href="./styles/responsive.css" />
 
@@ -30,14 +31,13 @@
         </header>
         <main>
             <section class="pokemon_container">
-                <!-- <div class="search_bar">
-                    <button>surprise</button>
-                    <input type="text" placeholder="search" />
-                    <button>sort by</button>
-                </div> -->
                 <section id="pokemon_box" class="pokemon_wrap"></section>
+                <div id="loading_screen" class="hide_spin">
+                    <div class="loading_spinner"></div>
+                    <p>...loading</p>
+                </div>
                 <div class="load_more_box">
-                    <button onclick="loadMorePkm()">Load More</button>
+                    <button id="load_btn" onclick="loadMorePkm()">Load More</button>
                 </div>
             </section>
             <dialog
