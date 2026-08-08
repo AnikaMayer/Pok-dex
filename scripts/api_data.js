@@ -84,9 +84,11 @@ async function getMoreDetails(singlePokemon) {
     const respFromJson = await resp.json();
     const pkmDescr = getDescr(respFromJson);
     const pkmCtgry = getCtgry(respFromJson);
+    const evoChain = await getEvoChain(respFromJson);
 
-    const detailsObj = createDetailsObj(pkmData, pkmDescr, pkmImg, pkmTypes, pkmCtgry, pkmAblts);
+    const detailsObj = createDetailsObj(pkmData, pkmDescr, pkmImg, pkmTypes, pkmCtgry, pkmAblts, evoChain);
     PKM_DETAILS.push(detailsObj);
+    console.log(evoChain);
 }
 
 // helper-functions for each detail
@@ -110,12 +112,29 @@ function getCtgry(respFromJson) {
     return respFromJson.genera.find((element) => element.language.name === "en").genus;
 }
 
+async function getEvoChain(respFromJson) {
+    const evoChain = [];
+    const evoResp = await fetch(respFromJson.evolution_chain.url);
+    const evoRespFromJson = await evoResp.json();
+    const chainInfo = evoRespFromJson.chain;
+    evoChain.push(chainInfo.species.name);
+
+    chainInfo.evolves_to.forEach((firstEvo) => {
+        evoChain.push(firstEvo.species.name);
+        firstEvo.evolves_to.forEach((secondEvo) => {
+            evoChain.push(secondEvo.species.name);
+        });
+    });
+
+    return evoChain;
+}
+
 function getStats(statName, pkmData) {
     return pkmData.stats.find((element) => element.stat.name === statName).base_stat;
 }
 
 // object to push into Array
-function createDetailsObj(pkmData, pkmDescr, pkmImg, pkmTypes, pkmCtgry, pkmAblts) {
+function createDetailsObj(pkmData, pkmDescr, pkmImg, pkmTypes, pkmCtgry, pkmAblts, evoChain) {
     return {
         description: pkmDescr,
         name: pkmData.name,
@@ -126,6 +145,7 @@ function createDetailsObj(pkmData, pkmDescr, pkmImg, pkmTypes, pkmCtgry, pkmAblt
         weight: pkmData.weight,
         category: pkmCtgry,
         abilities: pkmAblts,
+        evolutions: evoChain,
         stats: {
             hp: getStats("hp", pkmData),
             attack: getStats("attack", pkmData),

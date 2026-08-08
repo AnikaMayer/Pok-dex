@@ -26,3 +26,20 @@ function searchPkm() {
         POKEMON_CARDS.innerHTML = noResultsTemplate(searchInput);
     }
 }
+
+// #region globalSearch
+
+// fetch global, when local search doesn´t work
+async function searchGlobalPkm(name) {
+    const resp = await fetch(`${POKEAPI}/pokemon/${name}`);
+    const respFromJson = await resp.json();
+    const pkmImg = respFromJson.sprites.other["official-artwork"].front_default;
+    const pkmTypes = getTypes(respFromJson);
+    const pokemonObject = createPkmObj(respFromJson, pkmImg, pkmTypes);
+    ALL_PKM.push(pokemonObject);
+    ALL_INFO.push(respFromJson);
+
+    return pokemonObject;
+}
+
+//#endregion

@@ -20,7 +20,6 @@ async function init() {
     await getPkmInfo(currOff);
     hideLoadingScreen();
     renderPkmCards(ALL_PKM);
-    console.log(ALL_INFO);
 }
 
 // #region renderCards
@@ -91,6 +90,7 @@ async function openDialog(pkmId) {
     DETAILS_DIALOG.innerHTML = dialogTemplate(details);
     DETAILS_DIALOG.classList.add("opened");
     loadDialogImg(singlePokemon, details);
+    renderEvoChain(details);
 }
 
 async function loadDialogImg(singlePokemon, details) {
@@ -106,6 +106,36 @@ function bubblingProtection(event) {
 function closeDialog() {
     DETAILS_DIALOG.close();
     DETAILS_DIALOG.classList.remove("opened");
+}
+
+async function renderEvoChain(details) {
+    const evoBox = document.getElementById("evo_box");
+    for (const name of details.evolutions) {
+        let evoData = ALL_PKM.find((pkm) => pkm.name === name);
+        if (!evoData) {
+            evoData = await searchGlobalPkm(name);
+        }
+        console.log(name, evoData);
+
+        evoBox.innerHTML += evoChainTemplate(evoData);
+        renderEvoTypes(evoData);
+        await loadEvoImg(evoData);
+    }
+}
+
+function renderEvoTypes(singlePokemon) {
+    const pkmTypesRef = document.getElementById(`evo_type_${singlePokemon.id}`);
+
+    for (let y = 0; y < singlePokemon.type.length; y++) {
+        pkmTypesRef.innerHTML += renderTypesTemplate(singlePokemon, y);
+    }
+}
+
+// create img-cache for not needing to use img-url
+async function loadEvoImg(singlePokemon) {
+    const pkmImgRef = document.getElementById(`evo_img_${singlePokemon.id}`);
+    const pkmImgLoad = await getImg(singlePokemon);
+    pkmImgRef.appendChild(pkmImgLoad);
 }
 
 //#endregion

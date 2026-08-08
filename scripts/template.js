@@ -77,8 +77,21 @@ function dialogTemplate(details) {
                     <p>Sp.-Defense <span>${details.stats.sp_defense}</span></p>
                     <p>Speed <span></span>${details.stats.speed}</p>
                 </div>
-            </div>
+                <div class="evo_container">
+                    <h3>Evolutions</h3>
+                    <div id="evo_box" class="evo_chain"></div>
+                </div>
             <footer class="dialog_footer"></footer>
         </section>
+    `;
+}
+
+function evoChainTemplate(evoData) {
+    return /*html*/ `
+        <div class="evo_stage">
+            <div id="evo_img_${evoData.id}"></div>
+            <p>${capitalizeLetter(evoData.name)} ${padNumber(evoData.id)}</p>
+            <div id="evo_type_${evoData.id}"></div>
+        </div>
     `;
 }
