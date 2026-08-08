@@ -43,6 +43,8 @@ function createPkmObj(respFromJson, pkmImg, pkmTypes) {
 
 // adjusted offset to fetch new url for next pokemon, then push into first url-Array
 async function loadMorePkm() {
+    const loadBtn = document.getElementById("load_btn");
+    loadBtn.classList.add("hide_btn");
     const resp = await fetch(`${POKEAPI}/pokemon?limit=20&offset=${currentOffset}`);
     const respFromJson = await resp.json();
     showLoadingScreen();
@@ -54,6 +56,7 @@ async function loadMorePkm() {
     await getPkmInfo(currOff);
     hideLoadingScreen();
     renderPkmCards(ALL_PKM);
+    loadBtn.classList.remove("hide_btn");
     currentOffset = currentOffset + 20; // adjust offset for next load (again +20)
 }
 
