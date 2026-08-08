@@ -27,10 +27,12 @@ function noResultsTemplate(searchInput) {
 
 function dialogTemplate(details) {
     return /*html*/ `
-        <section class="dialog_box">
+        <section class="dialog_box" onclick="bubblingProtection(event)">
             <header class="dialog_header">
+                <button onclick="goToPrevPokemon()">PREV</button>
                 <h2>${capitalizeLetter(details.name)}</h2>
                 <p>Nr. ${padNumber(details.id)}</p>
+                <button onclick="goToNextPokemon()">NEXT</button>
             </header>
             <div class="dialog_content">
                 <div id="dialog_img_${details.id}"></div>

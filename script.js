@@ -12,6 +12,7 @@ const IMG_CACHE = {};
 const EVO_CHAIN = [];
 
 let searchedPokemon = [];
+let currentPokemon = 0;
 
 async function init() {
     showLoadingScreen();
@@ -82,6 +83,8 @@ function padNumber(pkmId) {
 // #region dialog
 
 async function openDialog(pkmId) {
+    const activeList = searchedPokemon.length > 0 ? searchedPokemon : ALL_PKM;
+    currentPokemon = activeList.findIndex((pkm) => pkm.id === pkmId);
     const singlePokemon = ALL_PKM.find((pkm) => pkm.id === pkmId);
     await getMoreDetails(singlePokemon);
 
@@ -93,10 +96,38 @@ async function openDialog(pkmId) {
     renderEvoChain(details);
 }
 
-async function loadDialogImg(singlePokemon, details) {
-    const dialogImgRef = document.getElementById(`dialog_img_${details.id}`);
-    const pkmImgLoad = await getImg(singlePokemon);
-    dialogImgRef.appendChild(pkmImgLoad);
+async function goToNextPokemon() {
+    let activeList = [];
+
+    if (searchedPokemon.length > 0) {
+        activeList = searchedPokemon;
+    } else {
+        activeList = ALL_PKM;
+    }
+
+    if (currentPokemon < activeList.length - 1) {
+        currentPokemon++;
+    } else {
+        currentPokemon = 0;
+    }
+    await openDialog(activeList[currentPokemon].id);
+}
+
+async function goToPrevPokemon() {
+    let activeList = [];
+
+    if (searchedPokemon.length > 0) {
+        activeList = searchedPokemon;
+    } else {
+        activeList = ALL_PKM;
+    }
+
+    if (currentPokemon > 0) {
+        currentPokemon--;
+    } else {
+        currentPokemon = activeList.length - 1;
+    }
+    await openDialog(activeList[currentPokemon].id);
 }
 
 function bubblingProtection(event) {
@@ -108,14 +139,20 @@ function closeDialog() {
     DETAILS_DIALOG.classList.remove("opened");
 }
 
+async function loadDialogImg(singlePokemon, details) {
+    const dialogImgRef = document.getElementById(`dialog_img_${details.id}`);
+    const pkmImgLoad = await getImg(singlePokemon);
+    dialogImgRef.appendChild(pkmImgLoad);
+}
+
 async function renderEvoChain(details) {
     const evoBox = document.getElementById("evo_box");
+    evoBox.innerHTML = "";
     for (const name of details.evolutions) {
         let evoData = ALL_PKM.find((pkm) => pkm.name === name);
         if (!evoData) {
             evoData = await searchGlobalPkm(name);
         }
-        console.log(name, evoData);
 
         evoBox.innerHTML += evoChainTemplate(evoData);
         renderEvoTypes(evoData);
