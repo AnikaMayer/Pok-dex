@@ -21,3 +21,14 @@
         }
     }
 }
+
+@media screen and (min-width: 1441px) {
+    .main_header,
+    .main_footer {
+        padding: 0px max(120px, calc(50% - 720px));
+    }
+
+    .pokemon_container {
+        padding: 60px max(120px, calc(50% - 720px)) 0;
+    }
+}
