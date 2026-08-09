@@ -77,7 +77,7 @@ function capitalizeLetter(pkmName) {
 }
 
 function padNumber(pkmId) {
-    return pkmId.toString().padStart(5, "0");
+    return pkmId.toString().padStart(4, "0");
 }
 
 //#endregion
