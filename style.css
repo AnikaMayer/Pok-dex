@@ -261,26 +261,27 @@ main {
     padding-bottom: 60px;
 
     button {
-        width: 250px;
+        width: 300px;
         height: 90px;
         border: none;
         border-radius: 50px;
         background-color: rgb(121, 120, 120);
         box-shadow: 2px 3px 2px 2px rgb(40, 39, 39);
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
         padding: 30px;
+        gap: 20px;
+
+        img {
+            width: 50px;
+            height: auto;
+        }
 
         p {
             font-size: 1.25rem;
             font-weight: 700;
             color: white;
-        }
-
-        img {
-            width: 50px;
-            height: 50px;
         }
     }
 
