@@ -20,16 +20,17 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 120px;
+    padding: 10px 120px;
     position: sticky;
     top: 0;
     z-index: 1;
 
     h1 {
-        font-size: 3.75rem;
+        font-size: clamp(3rem, calc(2.786rem + 1.071vw), 3.75rem);
         font-weight: 800;
         color: rgb(243, 243, 243);
         text-shadow: 3px 3px 2px rgb(0, 0, 0);
+        margin-bottom: 30px;
 
         span {
             font-weight: 700;
@@ -38,102 +39,113 @@ main {
     }
 
     .search_bar {
-        width: 500px;
+        width: clamp(300px, calc(242.857px + 17.857vw), 500px);
         height: 60px;
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        /* background-color: green; */
+        flex-direction: column;
+        justify-content: center;
 
-        .surprise_btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: rgb(121, 120, 120);
-            border: none;
-            box-shadow: 2px 3px 2px 2px rgb(40, 39, 39);
-
-            img {
-                width: 80%;
-                height: auto;
-            }
-        }
-
-        .surprise_btn:hover {
-            background-color: rgb(40, 39, 39);
-            border: 2px solid rgb(167, 164, 164);
-        }
-
-        .surprise_btn:active {
-            box-shadow: 2px 3px 2px 2px rgb(0, 0, 0);
-            transform: translateY(4px);
-        }
-
-        .input_box {
-            width: 350px;
-            height: 50px;
-            /* background-color: pink; */
+        .search_wrapper {
+            width: 100%;
+            height: fit-content;
             display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            transform: translateY(25%);
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
 
-            .search_field {
-                width: 100%;
-                height: 80%;
-                border: none;
-                border-radius: 50px;
-                /* border-style: inset; */
-                /* border: 2px 2px solid grey; */
-                box-shadow: inset 0 0 3px 3px rgb(187, 185, 185);
-                background-color: whitesmoke;
-                padding: 15px;
+            .input_box {
+                width: clamp(200px, calc(157.143px + 13.393vw), 350px);
+                height: 50px;
+                display: flex;
+                align-items: center;
+
+                .search_field {
+                    width: 100%;
+                    height: 80%;
+                    border: none;
+                    border-radius: 50px;
+                    /* border-style: inset; */
+                    /* border: 2px 2px solid grey; */
+                    box-shadow: inset 0 0 3px 3px rgb(187, 185, 185);
+                    background-color: whitesmoke;
+                    padding: 15px;
+                }
+
+                .search_field:focus {
+                    outline: 2px solid rgb(22, 22, 22);
+                    background-color: rgb(255, 255, 255);
+                }
             }
 
-            .search_field:focus {
-                outline: 2px solid rgb(22, 22, 22);
-                background-color: rgb(255, 255, 255);
-            }
+            .btn_wrapper {
+                display: flex;
+                align-items: center;
+                gap: 8px;
 
-            .hint_message {
-                margin-left: 15px;
-                font-size: 1rem;
-                color: rgb(207, 93, 93);
-                opacity: 1;
-            }
+                .search_btn {
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    background: none;
+                    border: none;
+                    box-shadow: 2px 3px 2px 2px rgb(40, 39, 39);
 
-            .hide_hint_msg {
-                opacity: 0;
+                    img {
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+
+                .search_btn:hover {
+                    background-color: rgb(40, 39, 39);
+                    border: 2px solid rgb(167, 164, 164);
+                }
+
+                .search_btn:active {
+                    box-shadow: 2px 3px 2px 2px rgb(0, 0, 0);
+                    transform: translateY(4px);
+                }
+
+                .search_btn:disabled {
+                    transform: none;
+                    background-color: none;
+                }
+
+                .surprise_btn {
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    background-color: rgb(121, 120, 120);
+                    border: none;
+                    box-shadow: 2px 3px 2px 2px rgb(40, 39, 39);
+
+                    img {
+                        width: 80%;
+                        height: auto;
+                    }
+                }
+
+                .surprise_btn:hover {
+                    background-color: rgb(40, 39, 39);
+                    border: 2px solid rgb(167, 164, 164);
+                }
+
+                .surprise_btn:active {
+                    box-shadow: 2px 3px 2px 2px rgb(0, 0, 0);
+                    transform: translateY(4px);
+                }
             }
         }
 
-        .search_btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: none;
-            border: none;
-            box-shadow: 2px 3px 2px 2px rgb(40, 39, 39);
-
-            img {
-                width: 100%;
-                height: auto;
-            }
+        .hint_message {
+            margin-left: 30px;
+            font-size: 1rem;
+            color: rgb(207, 93, 93);
+            opacity: 1;
         }
 
-        .search_btn:hover {
-            background-color: rgb(40, 39, 39);
-            border: 2px solid rgb(167, 164, 164);
-        }
-
-        .search_btn:active {
-            box-shadow: 2px 3px 2px 2px rgb(0, 0, 0);
-            transform: translateY(4px);
-        }
-
-        .search_btn:disabled {
-            transform: none;
-            background-color: none;
+        .hide_hint_msg {
+            opacity: 0;
         }
     }
 }
@@ -160,7 +172,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 60px 120px 0;
+    padding: 60px clamp(0px, calc(-34.286px + 10.714vw), 120px) 0;
     flex: 1;
 
     .pokemon_wrap {
