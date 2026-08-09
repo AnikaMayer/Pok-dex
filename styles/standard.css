@@ -8,12 +8,19 @@
 
 html {
     font-size: 16px;
+    background-color: var(--header_footer_bg_color);
 }
 
 a {
     text-decoration: none;
+    cursor: pointer;
 }
 
 button {
     cursor: pointer;
+}
+
+button,
+input {
+    font-family: "Exo 2";
 }

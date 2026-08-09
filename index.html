@@ -17,17 +17,37 @@
         <script src="./scripts/api_data.js"></script>
         <script src="./scripts/search.js"></script>
         <script src="script.js" defer></script>
+
+        <link rel="shortcut icon" href="./assets/img/pokeball-icon.png" type="image/x-icon" />
     </head>
-    <body onload="init()">
+    <body id="page_top" onload="init()">
         <header class="main_header">
-            <div class="search_bar">
-                <button>surprise</button>
-                <div>
-                    <input id="search_input" oninput="checkSearchInput()" type="search" placeholder="search by name" />
-                    <p id="hint_msg" class="hint_message hidden">Please enter at least 3 characters!</p>
+            <a aria-label="go to page-top" href="#page_top">
+                <h1>PoKé<span>DeX</span></h1>
+            </a>
+            <nav class="search_bar">
+                <button class="surprise_btn">
+                    <img src="./assets/img/poke_dice_random.png" alt="Dice with Pokemon" />
+                </button>
+                <div class="input_box">
+                    <input
+                        id="search_input"
+                        class="search_field"
+                        oninput="checkSearchInput()"
+                        type="search"
+                        placeholder="search by name"
+                    />
+                    <p id="hint_msg" class="hint_message hide_hint_msg">-> Please enter at least 3 characters!</p>
                 </div>
-                <button id="search_button" disabled onclick="searchPkm()">search</button>
-            </div>
+                <button id="search_button" class="search_btn" disabled onclick="searchPkm()">
+                    <img
+                        id="search_img"
+                        class="hide_search_img"
+                        src="./assets/img/pokeball_button.png"
+                        alt="Pokeball-Icon"
+                    />
+                </button>
+            </nav>
         </header>
         <main>
             <section class="pokemon_container">
@@ -37,8 +57,14 @@
                     <p>...loading</p>
                 </div>
                 <div class="load_more_box">
-                    <button id="load_btn" onclick="loadMorePkm()">Load More</button>
-                    <button id="back_btn" class="hide_back_btn" onclick="goBack()">Go Back</button>
+                    <button id="load_btn" onclick="loadMorePkm()">
+                        <p>Show More...</p>
+                        <img src="./assets/img/pokeball_pixel.png" alt="Pokeball" />
+                    </button>
+                    <button id="back_btn" class="hide_back_btn" onclick="goBack()">
+                        <p>Go Back</p>
+                        <img src="./assets/img/pokeball_pixel.png" alt="Pokeball" />
+                    </button>
                 </div>
             </section>
             <dialog
@@ -48,6 +74,8 @@
                 onclick="closeDialog()"
             ></dialog>
         </main>
-        <footer class="main_footer">footer</footer>
+        <footer class="main_footer">
+            <p>© 2026 Anika Mayer</p>
+        </footer>
     </body>
 </html>

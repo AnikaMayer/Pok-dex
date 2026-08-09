@@ -47,10 +47,26 @@
     opacity: 0;
 }
 
-.hide_btn {
-    display: none;
+.load_more_box {
+    .hide_load_btn {
+        display: none;
+    }
 }
 
-.hide_back_btn {
-    display: none;
+.load_more_box {
+    .hide_back_btn {
+        display: none;
+    }
+}
+
+.hide_search_img {
+    opacity: 0.5;
+}
+
+.search_field::-webkit-search-cancel-button {
+    filter: hue-rotate(150deg) brightness(2);
+    opacity: 1;
+    background-color: black;
+    margin-right: 5px;
+    padding: 5px;
 }

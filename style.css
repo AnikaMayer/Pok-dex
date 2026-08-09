@@ -1,5 +1,9 @@
 body {
     min-height: 100dvh;
+    font-family: "Exo 2";
+    display: flex;
+    flex-direction: column;
+    background-color: var(--content_bg_color);
 }
 
 main {
@@ -11,75 +15,185 @@ main {
 
 .main_header {
     width: 100%;
-    height: 60px;
-    background-color: teal;
+    height: 120px;
+    background-color: var(--header_footer_bg_color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 120px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+
+    h1 {
+        font-size: 3.75rem;
+        font-weight: 800;
+        color: rgb(243, 243, 243);
+        text-shadow: 3px 3px 2px rgb(0, 0, 0);
+
+        span {
+            font-weight: 700;
+            color: rgb(173, 172, 172);
+        }
+    }
 
     .search_bar {
+        width: 500px;
+        height: 60px;
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
+        align-items: center;
+        /* background-color: green; */
 
-        .hint_message {
-            color: red;
-            opacity: 1;
+        .surprise_btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgb(121, 120, 120);
+            border: none;
+            box-shadow: 2px 3px 2px 2px rgb(40, 39, 39);
+
+            img {
+                width: 80%;
+                height: auto;
+            }
         }
 
-        .hidden {
-            opacity: 0;
+        .surprise_btn:hover {
+            background-color: rgb(40, 39, 39);
+            border: 2px solid rgb(167, 164, 164);
+        }
+
+        .surprise_btn:active {
+            box-shadow: 2px 3px 2px 2px rgb(0, 0, 0);
+            transform: translateY(4px);
+        }
+
+        .input_box {
+            width: 350px;
+            height: 50px;
+            /* background-color: pink; */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            transform: translateY(25%);
+
+            .search_field {
+                width: 100%;
+                height: 80%;
+                border: none;
+                border-radius: 50px;
+                /* border-style: inset; */
+                /* border: 2px 2px solid grey; */
+                box-shadow: inset 0 0 3px 3px rgb(187, 185, 185);
+                background-color: whitesmoke;
+                padding: 15px;
+            }
+
+            .search_field:focus {
+                outline: 2px solid rgb(22, 22, 22);
+                background-color: rgb(255, 255, 255);
+            }
+
+            .hint_message {
+                margin-left: 15px;
+                font-size: 1rem;
+                color: rgb(207, 93, 93);
+                opacity: 1;
+            }
+
+            .hide_hint_msg {
+                opacity: 0;
+            }
+        }
+
+        .search_btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: none;
+            border: none;
+            box-shadow: 2px 3px 2px 2px rgb(40, 39, 39);
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        .search_btn:hover {
+            background-color: rgb(40, 39, 39);
+            border: 2px solid rgb(167, 164, 164);
+        }
+
+        .search_btn:active {
+            box-shadow: 2px 3px 2px 2px rgb(0, 0, 0);
+            transform: translateY(4px);
+        }
+
+        .search_btn:disabled {
+            transform: none;
+            background-color: none;
         }
     }
 }
 
 .main_footer {
     width: 100%;
-    height: 60px;
-    background-color: teal;
+    height: 120px;
+    background-color: var(--header_footer_bg_color);
+    /* position: absolute;
+    bottom: 0; */
+    font-size: 1.15rem;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 40%;
+    border-top-right-radius: 40%;
 }
 
 .pokemon_container {
-    width: 80%;
+    width: 100%;
     height: 100%;
-    background-color: antiquewhite;
+    background-color: var(--content_bg_color);
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    .search_bar {
-        width: 80%;
-        height: 200px;
-        background-color: rgba(0, 0, 0, 0.103);
-        display: flex;
-        justify-content: space-between;
-        padding: 50px 20px;
-
-        button,
-        input {
-            width: 25%;
-            height: 80px;
-        }
-    }
+    padding: 60px 120px 0;
+    flex: 1;
 
     .pokemon_wrap {
-        width: 80%;
-        /* height: 100%; */
+        width: 90%;
+        height: 100%;
+        background-color: var(--pkm_container_bg_color);
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
-        background-color: rgba(255, 0, 0, 0.171);
+        padding: 50px 0 0;
 
         .pokemon_card {
-            width: 23%;
-            /* height: 350px; */
+            width: 300px;
+            height: 320px;
+            border: none;
+            /* border-radius: 5%; */
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
             margin: 0 0.78% 50px;
+            background-color: rgba(255, 254, 254, 0.486);
 
             .pkm_img_box {
                 width: 100%;
-                /* height: 70%; */
-                background-color: rgba(0, 255, 255, 0.247);
+                height: 70%;
+                border-radius: 5%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: var(--pkm_cards_bg_color);
 
                 img {
-                    width: 100%;
+                    width: 70%;
                     height: auto;
                 }
             }
@@ -106,8 +220,33 @@ main {
 
                 .single_type {
                     width: 40%;
+                    height: 20px;
                     /* background-color: pink; */
                 }
+            }
+        }
+
+        .no_result_box {
+            width: 80%;
+            height: fit-content;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 60px;
+            margin-bottom: 60px;
+
+            .error_msg {
+                font-size: 2rem;
+                font-weight: 600;
+                color: var(--header_footer_bg_color);
+                text-align: center;
+                line-height: 140%;
+            }
+
+            img {
+                width: 90px;
+                height: auto;
             }
         }
     }
@@ -116,13 +255,42 @@ main {
 .load_more_box {
     width: 80%;
     height: 150px;
-    background-color: rgba(0, 0, 0, 0.103);
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-bottom: 60px;
 
     button {
-        width: 25%;
-        height: 50px;
+        width: 250px;
+        height: 90px;
+        border: none;
+        border-radius: 50px;
+        background-color: rgb(121, 120, 120);
+        box-shadow: 2px 3px 2px 2px rgb(40, 39, 39);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px;
+
+        p {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        img {
+            width: 50px;
+            height: 50px;
+        }
+    }
+
+    button:hover {
+        background-color: rgb(40, 39, 39);
+        border: 2px solid rgb(167, 164, 164);
+    }
+
+    button:active {
+        box-shadow: 2px 3px 2px 2px rgb(0, 0, 0);
+        transform: translateY(4px);
     }
 }
