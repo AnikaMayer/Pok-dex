@@ -21,7 +21,10 @@ function renderTypesTemplate(singlePokemon, y) {
 
 function noResultsTemplate(searchInput) {
     return /*html*/ `
-        <p>"Oops! The Pokéball missed! Your search for „${searchInput}" didn´t catch any Pokémon. Try again!"</p>
+        <div class="no_result_box">
+            <p class="error_msg">Oops! The Pokéball missed!<br>Your search for „${searchInput}" didn´t catch any Pokémon. Try again!</p>
+            <img src="./assets/img/pkm_relaxo_front.svg" alt="Image of Relaxo">
+        </div>
     `;
 }
 
