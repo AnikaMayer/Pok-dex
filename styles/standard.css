@@ -24,3 +24,7 @@ button,
 input {
     font-family: "Exo 2";
 }
+
+li {
+    list-style: none;
+}

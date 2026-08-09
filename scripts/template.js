@@ -1,15 +1,17 @@
 function renderPkmCardsTemplate(singlePokemon) {
     return /*html*/ `
-        <button aria-label="show Pokemon details" class="pokemon_card" onclick="openDialog(${singlePokemon.id})">
-            <div id="pkm_img_${singlePokemon.id}" class="pkm_img_box"></div>
-            <div class="name_and_Type">
-                <div class="pkm_name">
-                    <p>Nr. ${padNumber(singlePokemon.id)}</p>
-                    <h2>${capitalizeLetter(singlePokemon.name)}</h2>
+        <li>
+            <button aria-label="show Pokemon details" class="pokemon_card" onclick="openDialog(${singlePokemon.id})">
+                <div id="pkm_img_${singlePokemon.id}" class="pkm_img_box"></div>
+                <div class="name_and_Type">
+                    <div class="pkm_name">
+                        <p>Nr. ${padNumber(singlePokemon.id)}</p>
+                        <h2>${capitalizeLetter(singlePokemon.name)}</h2>
+                    </div>
+                    <div id="pkm_type_${singlePokemon.id}" class="pkm_type"></div>
                 </div>
-                <div id="pkm_type_${singlePokemon.id}" class="pkm_type"></div>
-            </div>
-        </button>
+            </button>
+        </li>
     `;
 }
 
