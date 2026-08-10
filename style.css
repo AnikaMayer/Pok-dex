@@ -6,6 +6,10 @@ body {
     background-color: var(--content_bg_color);
 }
 
+.overscroll_stop {
+    overflow: hidden;
+}
+
 main {
     display: flex;
     flex-direction: column;
@@ -109,6 +113,7 @@ main {
                 .search_btn:disabled {
                     transform: none;
                     background-color: none;
+                    box-shadow: none;
                 }
 
                 .surprise_btn {

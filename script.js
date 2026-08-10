@@ -85,6 +85,7 @@ function padNumber(pkmId) {
 // #region dialog
 
 async function openDialog(pkmId) {
+    document.body.classList.add("overscroll_stop");
     let activeList;
     if (searchedPokemon.length > 0) {
         activeList = searchedPokemon;
@@ -153,6 +154,7 @@ function bubblingProtection(event) {
 }
 
 function closeDialog() {
+    document.body.classList.remove("overscroll_stop");
     DETAILS_DIALOG.close();
     DETAILS_DIALOG.classList.remove("opened");
 }
