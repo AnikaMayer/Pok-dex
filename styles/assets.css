@@ -89,6 +89,20 @@
     padding: 5px;
 }
 
+.dialog_container {
+    .dialog_box {
+        .dialog_header {
+            .hide_prev_btn {
+                visibility: hidden;
+            }
+
+            .hide_next_btn {
+                visibility: hidden;
+            }
+        }
+    }
+}
+
 /* #region hover-effects */
 
 /* .pokemon_card:hover {

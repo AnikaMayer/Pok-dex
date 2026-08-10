@@ -63,11 +63,11 @@ function dialogTemplate(details) {
                     <ul>
                         <li>
                             <span class="attribute_title">Height:</span>
-                            <span class="attribute_value">${details.height}</span>
+                            <span class="attribute_value">${formatHeight(details.height)}</span>
                         </li>
                         <li>
                             <span class="attribute_title">Weight:</span>
-                            <span class="attribute_value">${details.weight}</span>
+                            <span class="attribute_value">${formatWeight(details.weight)}</span>
                         </li>
                         <li>
                             <span class="attribute_title">Category:</span>

@@ -23,6 +23,7 @@ async function init() {
     await getPkmInfo(currOff);
     hideLoadingScreen();
     renderPkmCards(ALL_PKM);
+    console.log(ALL_NAMES[0]);
 }
 
 // #region renderCards
@@ -108,8 +109,8 @@ async function openDialog(pkmId) {
 
     const prevBtn = document.getElementById("prev_btn");
     const nextBtn = document.getElementById("next_btn");
-    prevBtn.disabled = activeList.length <= 1;
-    nextBtn.disabled = activeList.length <= 1;
+    prevBtn.classList.toggle("hide_prev_btn", currentPokemon <= 0);
+    nextBtn.classList.toggle("hide_next_btn", currentPokemon >= activeList.length - 1);
 }
 
 async function goToNextPokemon() {
@@ -182,7 +183,7 @@ async function renderEvoChain(details) {
         const evoName = details.evolutions[i];
         let evoData = ALL_PKM.find((pkm) => pkm.name === evoName);
         if (!evoData) {
-            evoData = await searchGlobalPkm(name);
+            evoData = await searchGlobalPkm(evoName);
         }
 
         let stageClass = "middle";
@@ -222,5 +223,15 @@ function statBarPercent(value) {
 function formatAbilityName(abilityName) {
     return abilityName.split("-").map(capitalizeLetter).join(" ");
 }
+
+function formatHeight(height) {
+    return (height / 10).toFixed(1) + " m";
+}
+
+function formatWeight(weight) {
+    return (weight / 10).toFixed(1) + " kg";
+}
+
+function changeGenderImg() {}
 
 //#endregion

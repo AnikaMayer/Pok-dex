@@ -1,3 +1,5 @@
+// #region localSearch
+
 // check condition for input-value, enable button and hint-message
 function checkSearchInput() {
     searchedPokemon = [];
@@ -45,6 +47,8 @@ async function searchPkm() {
     }
 }
 
+//#endregion
+
 // #region globalSearch
 
 // fetch global, when local search doesn´t work
@@ -61,6 +65,34 @@ async function searchGlobalPkm(name) {
     ALL_INFO.push(respFromJson);
 
     return pokemonObject;
+}
+
+//#endregion
+
+// #region randomSearch
+
+// search for a random Pokemon (Nr. 1 - 1025) and render the result
+async function searchRandomPkm() {
+    const surpriseBtn = document.getElementById("surprise_button");
+    surpriseBtn.disabled = true;
+
+    const randomName = ALL_NAMES[Math.floor(Math.random() * ALL_NAMES.length)];
+    console.log(randomName);
+
+    const pokemonObject = await searchGlobalPkm(randomName.name);
+    if (!pokemonObject) {
+        surpriseBtn.disabled = false;
+        return;
+    }
+
+    const searchInputRef = document.getElementById("search_input");
+    searchInputRef.value = pokemonObject.name;
+    checkSearchInput();
+
+    searchedGlobal = [pokemonObject];
+    renderPkmCards(searchedGlobal);
+
+    surpriseBtn.disabled = false;
 }
 
 //#endregion

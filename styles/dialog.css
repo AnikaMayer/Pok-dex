@@ -2,7 +2,7 @@
     width: 90%;
     max-width: 700px;
     height: 85vh;
-    background-color: pink;
+    background-color: var(--header_footer_bg_color);
     align-self: center;
     justify-self: center;
     position: fixed;
@@ -41,6 +41,7 @@
                 font-size: 30px;
                 font-weight: 800;
             }
+
             button:hover {
                 background-color: rgb(40, 39, 39);
                 border: 2px solid rgb(167, 164, 164);
