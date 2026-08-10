@@ -103,6 +103,7 @@ async function openDialog(pkmId) {
     DETAILS_DIALOG.innerHTML = dialogTemplate(details);
     DETAILS_DIALOG.classList.add("opened");
     loadDialogImg(singlePokemon, details);
+    renderDialogTypes(details);
     renderEvoChain(details);
 
     const prevBtn = document.getElementById("prev_btn");
@@ -165,16 +166,34 @@ async function loadDialogImg(singlePokemon, details) {
     dialogImgRef.appendChild(pkmImgLoad);
 }
 
+function renderDialogTypes(details) {
+    const pkmTypesRef = document.getElementById(`data_type_${details.id}`);
+
+    for (let y = 0; y < details.type.length; y++) {
+        pkmTypesRef.innerHTML += renderTypesTemplate(details, y);
+    }
+}
+
 async function renderEvoChain(details) {
     const evoBox = document.getElementById("evo_box");
     evoBox.innerHTML = "";
-    for (const name of details.evolutions) {
-        let evoData = ALL_PKM.find((pkm) => pkm.name === name);
+
+    for (let i = 0; i < details.evolutions.length; i++) {
+        const evoName = details.evolutions[i];
+        let evoData = ALL_PKM.find((pkm) => pkm.name === evoName);
         if (!evoData) {
             evoData = await searchGlobalPkm(name);
         }
 
-        evoBox.innerHTML += evoChainTemplate(evoData);
+        let stageClass = "middle";
+        if (i === 0) {
+            stageClass = "first";
+        }
+        if (i === details.evolutions.length - 1) {
+            stageClass = "last";
+        }
+
+        evoBox.innerHTML += evoChainTemplate(evoData, stageClass);
         renderEvoTypes(evoData);
         await loadEvoImg(evoData);
     }
@@ -193,6 +212,15 @@ async function loadEvoImg(singlePokemon) {
     const pkmImgRef = document.getElementById(`evo_img_${singlePokemon.id}`);
     const pkmImgLoad = await getImg(singlePokemon);
     pkmImgRef.appendChild(pkmImgLoad);
+}
+
+function statBarPercent(value) {
+    const maxBaseStat = 255;
+    return Math.min(100, Math.round((value / maxBaseStat) * 100));
+}
+
+function formatAbilityName(abilityName) {
+    return abilityName.split("-").map(capitalizeLetter).join(" ");
 }
 
 //#endregion

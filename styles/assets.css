@@ -1,3 +1,5 @@
+/* #region loading spinner */
+
 .loading_spinner {
     position: relative;
     height: 50px;
@@ -43,9 +45,25 @@
     }
 }
 
+.loading_spin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    gap: 16px;
+    padding: 5px;
+}
+
 .hide_spin {
     opacity: 0;
 }
+
+.loading_msg {
+    font-size: 1.25rem;
+}
+
+/* #endregion */
 
 .load_more_box {
     .hide_load_btn {

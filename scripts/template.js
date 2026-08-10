@@ -36,71 +36,91 @@ function dialogTemplate(details) {
     return /*html*/ `
         <section class="dialog_box" onclick="bubblingProtection(event)">
             <header class="dialog_header">
-                <button id="prev_btn" onclick="goToPrevPokemon()">PREV</button>
+                <button id="prev_btn" onclick="goToPrevPokemon()"><</button>
                 <h2>${capitalizeLetter(details.name)}</h2>
                 <p>Nr. ${padNumber(details.id)}</p>
-                <button id="next_btn" onclick="goToNextPokemon()">NEXT</button>
+                <button id="next_btn" onclick="goToNextPokemon()">></button>
             </header>
             <div class="dialog_content">
-                <div id="dialog_img_${details.id}"></div>
                 <div class="main_info">
-                    <p class="description">${details.description}</p>
-                    <div>
-                        <button class="male"></button>
-                        <button class="female"></button>
+                    <div class="img_type_box">
+                        <div id="dialog_img_${details.id}" class="dialog_img"></div>
+                        <div id="data_type_${details.id}" class="data_type"></div>
                     </div>
-                    <div class="attributes">
-                        <ul>
-                            <li>
-                                <span class="attribute_title">Height:</span>
-                                <span class="attribute_value">${details.height}</span>
-                            </li>
-                            <li>
-                                <span class="attribute_title">Weight:</span>
-                                <span class="attribute_value">${details.weight}</span>
-                            </li>
-                        </ul>
-                        <ul>
-                            <li>
-                                <span class="attribute_title">Category:</span>
-                                <span class="attribute_value">${details.category}</span>
-                            </li>
-                            <li>
-                                <span class="attribute_title">Abilities:</span>
-                                <span class="attribute_value">${details.abilities}</span>
-                            </li>
-                        </ul>
+                    <div class="detail_info_box">
+                        <div class="gender_btn">
+                            <button class="female">
+                                <img src="./assets/img/icon_female_pink.svg" alt="female-gender-icon">
+                            </button>
+                            <button class="male">
+                                <img src="./assets/img/icon_male_blue.svg" alt="male-gender-icon">
+                            </button>
+                        </div>
+                        <p class="description">${details.description}</p>
                     </div>
                 </div>
-                <div class="data">
-                    <div class="data_type">
-                        <h3>Type</h3>
-                    </div>
+                <div class="attributes">
+                    <ul>
+                        <li>
+                            <span class="attribute_title">Height:</span>
+                            <span class="attribute_value">${details.height}</span>
+                        </li>
+                        <li>
+                            <span class="attribute_title">Weight:</span>
+                            <span class="attribute_value">${details.weight}</span>
+                        </li>
+                        <li>
+                            <span class="attribute_title">Category:</span>
+                            <span class="attribute_value">${details.category}</span>
+                        </li>
+                        <li>
+                            <span class="attribute_title">Abilities:</span>
+                            <span class="attribute_value">${details.abilities.map(formatAbilityName).join(" | ")}</span>
+                        </li>
+                    </ul>
                 </div>
                 <div class="stats">
                     <h3>Stats</h3>
-                    <p>HP <span>${details.stats.hp}</span></p>
-                    <p>Attack <span>${details.stats.attack}</span></p>
-                    <p>Defense <span>${details.stats.defense}</span></p>
-                    <p>Sp.-Attack <span>${details.stats.sp_attack}</span></p>
-                    <p>Sp.-Defense <span>${details.stats.sp_defense}</span></p>
-                    <p>Speed <span></span>${details.stats.speed}</p>
+                    <div>${statRowTemplate("HP", details.stats.hp, "hp")}</div>
+                    <div>${statRowTemplate("Attack", details.stats.attack, "attack")}</div>
+                    <div>${statRowTemplate("Defense", details.stats.defense, "defense")}</div>
+                    <div>${statRowTemplate("Sp.-Attack", details.stats.sp_attack, "sp_attack")}</div>
+                    <div>${statRowTemplate("Sp.-Defense", details.stats.sp_defense, "sp_defense")}</div>
+                    <div>${statRowTemplate("Speed", details.stats.speed, "speed")}</div>
                 </div>
                 <div class="evo_container">
                     <h3>Evolutions</h3>
                     <div id="evo_box" class="evo_chain"></div>
                 </div>
+            </div>
             <footer class="dialog_footer"></footer>
         </section>
     `;
 }
 
-function evoChainTemplate(evoData) {
+function evoChainTemplate(evoData, stageClass) {
     return /*html*/ `
-        <div class="evo_stage">
-            <div id="evo_img_${evoData.id}"></div>
-            <p>${capitalizeLetter(evoData.name)} ${padNumber(evoData.id)}</p>
-            <div id="evo_type_${evoData.id}"></div>
+        <div class="evo_stage ${stageClass}">
+            <div class="evo_wrapper">
+                <div id="evo_img_${evoData.id}" class="evo_img"></div>
+                <div class="evo_title">
+                    <p class="evo_name">${capitalizeLetter(evoData.name)}</p>
+                    <p class="evo_nr">Nr. ${padNumber(evoData.id)}</p>
+                </div>
+                <div id="evo_type_${evoData.id}" class="evo_type"></div>
+            </div>
+        </div>
+    `;
+}
+
+function statRowTemplate(label, value, statKey) {
+    return /*html*/ `
+        <div class="stat_row">
+            <p class="stat_label">${label}</p>
+            <div class="stat_bar_track">
+                <div class="stat_bar_fill stat_${statKey}" style="width: ${statBarPercent(value)}%"></div>
+            </div>
+            <p class="stat_value">${value}</p>
         </div>
     `;
 }

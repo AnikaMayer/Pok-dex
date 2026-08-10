@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="./styles/variables.css" />
         <link rel="stylesheet" href="./styles/type_colors.css" />
         <link rel="stylesheet" href="./styles/assets.css" />
+        <link rel="stylesheet" href="./styles/dialog.css" />
         <link rel="stylesheet" href="style.css" />
         <link rel="stylesheet" href="./styles/responsive.css" />
 
@@ -56,9 +57,9 @@
         <main>
             <section class="pokemon_container">
                 <ul id="pokemon_box" class="pokemon_wrap"></ul>
-                <div id="loading_screen" class="hide_spin">
+                <div id="loading_screen" class="loading_spin hide_spin">
                     <div class="loading_spinner"></div>
-                    <p>...loading</p>
+                    <p class="loading_msg">...loading</p>
                 </div>
                 <div class="load_more_box">
                     <button id="load_btn" onclick="loadMorePkm()">
