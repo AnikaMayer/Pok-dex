@@ -114,6 +114,21 @@
     }
 }
 
+.dialog_main::-webkit-scrollbar {
+    width: 7px;
+}
+
+.dialog_main::-webkit-scrollbar {
+    padding: 2px 0;
+    background-color: var(--content_bg_color);
+}
+
+.dialog_main::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: var(--evolutions_container_bg);
+}
+
 /* #endregion */
 
 /* #region hover-effects */

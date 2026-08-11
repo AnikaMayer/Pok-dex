@@ -40,58 +40,60 @@ function dialogTemplate(details) {
                 <h2>${capitalizeLetter(details.name)}</h2>
                 <button onclick="closeDialog()">X</button>
             </header>
-            <div class="dialog_content">
-                <div class="main_info">
-                    <div class="img_type_box">
-                        <div id="dialog_img_${details.id}" class="dialog_img"></div>
-                        <div id="data_type_${details.id}" class="data_type"></div>
-                    </div>
-                    <div class="detail_info_box">
-                        <div class="gender_btn">
-                            <button class="female">
-                                <img src="./assets/img/icon_female_pink.svg" alt="female-gender-icon">
-                            </button>
-                            <button class="male">
-                                <img src="./assets/img/icon_male_blue.svg" alt="male-gender-icon">
-                            </button>
+            <main class="dialog_main">            
+                <div class="dialog_content">
+                    <div class="main_info">
+                        <div class="img_type_box">
+                            <div id="dialog_img_${details.id}" class="dialog_img"></div>
+                            <div id="data_type_${details.id}" class="data_type"></div>
                         </div>
-                        <p class="description">${details.description}</p>
+                        <div class="detail_info_box">
+                            <div class="gender_btn">
+                                <button class="female">
+                                    <img src="./assets/img/icon_female_pink.svg" alt="female-gender-icon">
+                                </button>
+                                <button class="male">
+                                    <img src="./assets/img/icon_male_blue.svg" alt="male-gender-icon">
+                                </button>
+                            </div>
+                            <p class="description">${details.description}</p>
+                        </div>
+                    </div>
+                    <div class="attributes">
+                        <ul>
+                            <li>
+                                <span class="attribute_title">Height:</span>
+                                <span class="attribute_value">${formatHeight(details.height)}</span>
+                            </li>
+                            <li>
+                                <span class="attribute_title">Weight:</span>
+                                <span class="attribute_value">${formatWeight(details.weight)}</span>
+                            </li>
+                            <li>
+                                <span class="attribute_title">Category:</span>
+                                <span class="attribute_value">${details.category}</span>
+                            </li>
+                            <li>
+                                <span class="attribute_title">Abilities:</span>
+                                <span class="attribute_value">${details.abilities.map(formatAbilityName).join(" | ")}</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="stats">
+                        <h3>Stats</h3>
+                        <div>${statRowTemplate("HP", details.stats.hp, "hp")}</div>
+                        <div>${statRowTemplate("Attack", details.stats.attack, "attack")}</div>
+                        <div>${statRowTemplate("Defense", details.stats.defense, "defense")}</div>
+                        <div>${statRowTemplate("Sp.-Attack", details.stats.sp_attack, "sp_attack")}</div>
+                        <div>${statRowTemplate("Sp.-Defense", details.stats.sp_defense, "sp_defense")}</div>
+                        <div>${statRowTemplate("Speed", details.stats.speed, "speed")}</div>
+                    </div>
+                    <div class="evo_container">
+                        <h3>Evolutions</h3>
+                        <div id="evo_box" class="evo_chain"></div>
                     </div>
                 </div>
-                <div class="attributes">
-                    <ul>
-                        <li>
-                            <span class="attribute_title">Height:</span>
-                            <span class="attribute_value">${formatHeight(details.height)}</span>
-                        </li>
-                        <li>
-                            <span class="attribute_title">Weight:</span>
-                            <span class="attribute_value">${formatWeight(details.weight)}</span>
-                        </li>
-                        <li>
-                            <span class="attribute_title">Category:</span>
-                            <span class="attribute_value">${details.category}</span>
-                        </li>
-                        <li>
-                            <span class="attribute_title">Abilities:</span>
-                            <span class="attribute_value">${details.abilities.map(formatAbilityName).join(" | ")}</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="stats">
-                    <h3>Stats</h3>
-                    <div>${statRowTemplate("HP", details.stats.hp, "hp")}</div>
-                    <div>${statRowTemplate("Attack", details.stats.attack, "attack")}</div>
-                    <div>${statRowTemplate("Defense", details.stats.defense, "defense")}</div>
-                    <div>${statRowTemplate("Sp.-Attack", details.stats.sp_attack, "sp_attack")}</div>
-                    <div>${statRowTemplate("Sp.-Defense", details.stats.sp_defense, "sp_defense")}</div>
-                    <div>${statRowTemplate("Speed", details.stats.speed, "speed")}</div>
-                </div>
-                <div class="evo_container">
-                    <h3>Evolutions</h3>
-                    <div id="evo_box" class="evo_chain"></div>
-                </div>
-            </div>
+            </main>
             <footer class="dialog_footer">
                 <button id="prev_btn" onclick="goToPrevPokemon()"><</button>
                 <button id="next_btn" onclick="goToNextPokemon()">></button>

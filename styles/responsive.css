@@ -14,25 +14,146 @@
     }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-    .main_header {
-        flex-direction: column;
+@media screen and (max-width: 668px) {
+    .dialog_container {
+        .dialog_box {
+            .dialog_header {
+                padding: 20px clamp(10px, calc(-17.586px + 8.621vw), 40px);
+
+                h2 {
+                    font-size: 1.4rem;
+                }
+
+                button {
+                    width: 30px;
+                    height: 30px;
+                    font-size: 1.125rem;
+                }
+            }
+
+            .dialog_main {
+                .dialog_content {
+                    padding: 20px clamp(10px, calc(-17.586px + 8.621vw), 40px);
+
+                    .main_info {
+                        height: 60dvh;
+                        width: 100%;
+                        flex-direction: column;
+                        justify-content: flex-start;
+                        align-items: center;
+                        gap: 15px;
+
+                        .img_type_box {
+                            width: 100%;
+
+                            .dialog_img {
+                                width: 100%;
+
+                                img {
+                                    width: 90%;
+                                    max-width: 260px;
+                                }
+                            }
+                        }
+
+                        .detail_info_box {
+                            width: 100%;
+                            padding: 0;
+
+                            .gender_btn {
+                                button {
+                                    width: 45%;
+                                }
+                            }
+                        }
+                    }
+
+                    .attributes {
+                        ul {
+                            li {
+                                flex-direction: column;
+                                font-size: 1rem;
+
+                                .attribute_value {
+                                    text-align: end;
+                                }
+                            }
+                        }
+                    }
+
+                    .stats {
+                        gap: 0;
+
+                        .stat_row {
+                            display: block;
+
+                            p {
+                                font-size: 1rem;
+                            }
+
+                            .stat_bar_track {
+                                margin-block: 4px;
+                            }
+
+                            .stat_label {
+                            }
+
+                            .stat_value {
+                                display: flex;
+                                justify-content: flex-end;
+                                transform: translateY(-37px);
+                            }
+                        }
+                    }
+
+                    .evo_container {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+
+                        h3 {
+                            padding-bottom: 25px;
+                        }
+
+                        .evo_chain {
+                            flex-direction: column;
+                            align-items: center;
+                            flex-wrap: nowrap;
+
+                            .first:after {
+                                left: 48%;
+                                top: 101%;
+                                rotate: 90deg;
+                            }
+
+                            .middle:after {
+                                left: 48%;
+                                top: 101%;
+                                rotate: 90deg;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .dialog_footer {
+                padding: 20px clamp(10px, calc(-17.586px + 8.621vw), 40px);
+            }
+        }
     }
 
-    .pokemon_container {
-        .pokemon_card {
-            width: 30%;
-        }
+    .dialog_main::-webkit-scrollbar {
+        display: none;
     }
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 788px) {
     .main_header {
         height: 180px;
         flex-direction: column;
         justify-content: unset;
-        gap: 16px;
-        padding: 20px 0;
+        gap: 30px;
+        padding: 20px 10px;
 
         h1 {
             margin: 0;
@@ -40,7 +161,6 @@
 
         .search_bar {
             .search_wrapper {
-                /* justify-content: space-between; */
                 gap: 8px;
 
                 .btn_wrapper {
@@ -60,6 +180,25 @@
             .hint_message {
                 margin-left: 15px;
             }
+        }
+    }
+
+    .load_more_box {
+        button {
+            width: 200px;
+            height: 65px;
+
+            p {
+                display: none;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 789px) and (max-width: 1023px) {
+    .pokemon_container {
+        .pokemon_card {
+            width: 30%;
         }
     }
 }
