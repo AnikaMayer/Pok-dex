@@ -1,29 +1,27 @@
-// #region ArrayCards
+// #region fetchData
 
 // get url for every pokemon leading to more info
-async function getData() {
-    const response = await fetch(`${POKEAPI}/pokemon?limit=20&offset=0`);
+async function getData(offset) {
+    const response = await fetch(`${POKEAPI}/pokemon?limit=20&offset=${offset}`);
     const responseFromJson = await response.json();
 
     for (let j = 0; j < responseFromJson.results.length; j++) {
-        POKEMON_URL.push(responseFromJson.results[j].url);
+        pokemonUrl.push(responseFromJson.results[j].url);
     }
-
-    currentOffset = currentOffset + 20; // offset being adjusted to load more later
 }
 
 // use pkm-url to fetch those infos and push all info into an Array to work with later
-async function getPkmInfo(currOff) {
-    for (const pkmUrl of currOff) {
+async function getPkmInfo(listUrl) {
+    for (const pkmUrl of listUrl) {
         const resp = await fetch(`${pkmUrl}`);
         const respFromJson = await resp.json();
-        ALL_INFO.push(respFromJson);
+        loadedInfo.push(respFromJson);
 
         const pkmImg = respFromJson.sprites.other["official-artwork"].front_default;
         const pkmTypes = getTypes(respFromJson);
 
         const pokemonObject = createPkmObj(respFromJson, pkmImg, pkmTypes);
-        ALL_PKM.push(pokemonObject);
+        loadedPkm.push(pokemonObject);
     }
 }
 
@@ -45,17 +43,14 @@ function createPkmObj(respFromJson, pkmImg, pkmTypes) {
 async function loadMorePkm() {
     const loadBtn = document.getElementById("load_btn");
     loadBtn.classList.add("hide_load_btn");
-    const resp = await fetch(`${POKEAPI}/pokemon?limit=20&offset=${currentOffset}`);
-    const respFromJson = await resp.json();
-    showLoadingScreen();
 
-    for (let j = 0; j < respFromJson.results.length; j++) {
-        POKEMON_URL.push(respFromJson.results[j].url);
-    }
-    const currOff = POKEMON_URL.slice(currentOffset); // slice with start = adjusted offset -> parameter for getInfo-function
-    await getPkmInfo(currOff);
+    showLoadingScreen();
+    await getData(currentOffset);
+
+    const listUrl = pokemonUrl.slice(currentOffset); // slice with start = adjusted offset
+    await getPkmInfo(listUrl);
     hideLoadingScreen();
-    renderPkmCards(ALL_PKM);
+    renderPkmCards(loadedPkm);
     loadBtn.classList.remove("hide_load_btn");
     currentOffset = currentOffset + 20; // adjust offset for next load (again +20)
 }
@@ -72,14 +67,14 @@ function hideLoadingScreen() {
 
 //#endregion
 
-// #region ArrayDetails
+// #region getDetailsDialog
 
 // use Array from above with all Info to find info needed for detail-view and push into Details-Array for dialog
 async function getMoreDetails(singlePokemon) {
-    if (PKM_DETAILS.find((pkmDetail) => pkmDetail.id === singlePokemon.id)) {
+    if (pkmDetails.find((pkmDetail) => pkmDetail.id === singlePokemon.id)) {
         return;
     }
-    const pkmData = ALL_INFO.find((pkm) => pkm.id === singlePokemon.id);
+    const pkmData = loadedInfo.find((pkm) => pkm.id === singlePokemon.id);
     const pkmImg = pkmData.sprites.other["official-artwork"].front_default;
     const pkmTypes = getTypes(pkmData);
     const pkmAblts = getAblty(pkmData);
@@ -88,9 +83,8 @@ async function getMoreDetails(singlePokemon) {
     const pkmDescr = getDescr(respFromJson);
     const pkmCtgry = getCtgry(respFromJson);
     const evoChain = await getEvoChain(respFromJson);
-
     const detailsObj = createDetailsObj(pkmData, pkmDescr, pkmImg, pkmTypes, pkmCtgry, pkmAblts, evoChain);
-    PKM_DETAILS.push(detailsObj);
+    pkmDetails.push(detailsObj);
 }
 
 // helper-functions for each detail
@@ -122,14 +116,12 @@ async function getEvoChain(respFromJson) {
     const evoRespFromJson = await evoResp.json();
     const chainInfo = evoRespFromJson.chain;
     evoChain.push(chainInfo.species.name);
-
     chainInfo.evolves_to.forEach((firstEvo) => {
         evoChain.push(firstEvo.species.name);
         firstEvo.evolves_to.forEach((secondEvo) => {
             evoChain.push(secondEvo.species.name);
         });
     });
-
     return evoChain;
 }
 
@@ -165,11 +157,12 @@ function createDetailsObj(pkmData, pkmDescr, pkmImg, pkmTypes, pkmCtgry, pkmAblt
 
 // #region getGlobalData
 
+//fetch from API (same as getData()-function), push into new Array for global search later on
 async function getAllPkmNames() {
     const response = await fetch(`${POKEAPI}/pokemon?limit=1025&offset=0`);
     const responseFromJson = await response.json();
 
-    ALL_NAMES.push(...responseFromJson.results);
+    allNames = responseFromJson.results;
 }
 
 async function getGlobalPkmInfo(matches) {
@@ -177,7 +170,7 @@ async function getGlobalPkmInfo(matches) {
     for (const pkm of matches) {
         const resp = await fetch(`${pkm.url}`);
         const respFromJson = await resp.json();
-        ALL_INFO.push(respFromJson);
+        loadedInfo.push(respFromJson);
 
         const pkmImg = respFromJson.sprites.other["official-artwork"].front_default;
         const pkmTypes = getTypes(respFromJson);
