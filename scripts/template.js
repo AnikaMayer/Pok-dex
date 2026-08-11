@@ -36,10 +36,9 @@ function dialogTemplate(details) {
     return /*html*/ `
         <section class="dialog_box" onclick="bubblingProtection(event)">
             <header class="dialog_header">
-                <button id="prev_btn" onclick="goToPrevPokemon()"><</button>
-                <h2>${capitalizeLetter(details.name)}</h2>
                 <p>Nr. ${padNumber(details.id)}</p>
-                <button id="next_btn" onclick="goToNextPokemon()">></button>
+                <h2>${capitalizeLetter(details.name)}</h2>
+                <button onclick="closeDialog()">X</button>
             </header>
             <div class="dialog_content">
                 <div class="main_info">
@@ -93,7 +92,10 @@ function dialogTemplate(details) {
                     <div id="evo_box" class="evo_chain"></div>
                 </div>
             </div>
-            <footer class="dialog_footer"></footer>
+            <footer class="dialog_footer">
+                <button id="prev_btn" onclick="goToPrevPokemon()"><</button>
+                <button id="next_btn" onclick="goToNextPokemon()">></button>
+            </footer>
         </section>
     `;
 }

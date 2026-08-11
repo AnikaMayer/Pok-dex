@@ -1,9 +1,28 @@
 /* #region loading spinner */
 
+.loading_spin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    gap: 16px;
+    padding: 5px;
+}
+
+.hide_spin {
+    display: none;
+}
+
+.loading_msg {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
 .loading_spinner {
     position: relative;
-    height: 50px;
-    width: 50px;
+    height: 80px;
+    width: 80px;
     background: linear-gradient(to bottom, rgb(254, 0, 1) 50%, white 50%);
     border-radius: 50%;
     border: 3px solid black;
@@ -45,25 +64,9 @@
     }
 }
 
-.loading_spin {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 200px;
-    height: 200px;
-    gap: 16px;
-    padding: 5px;
-}
-
-.hide_spin {
-    opacity: 0;
-}
-
-.loading_msg {
-    font-size: 1.25rem;
-}
-
 /* #endregion */
+
+/* #region "show-more" */
 
 .load_more_box {
     .hide_load_btn {
@@ -77,6 +80,10 @@
     }
 }
 
+/* #endregion */
+
+/* #region search-bar */
+
 .hide_search_img {
     opacity: 0.5;
 }
@@ -89,9 +96,13 @@
     padding: 5px;
 }
 
+/* #endregion */
+
+/* #region dialog */
+
 .dialog_container {
     .dialog_box {
-        .dialog_header {
+        .dialog_footer {
             .hide_prev_btn {
                 visibility: hidden;
             }
@@ -102,6 +113,8 @@
         }
     }
 }
+
+/* #endregion */
 
 /* #region hover-effects */
 

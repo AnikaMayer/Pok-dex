@@ -32,13 +32,13 @@ main {
     h1 {
         font-size: clamp(3rem, calc(2.786rem + 1.071vw), 3.75rem);
         font-weight: 800;
-        color: rgb(243, 243, 243);
+        color: var(--text_highlight);
         text-shadow: 3px 3px 2px rgb(0, 0, 0);
         margin-bottom: 30px;
 
         span {
             font-weight: 700;
-            color: rgb(173, 172, 172);
+            color: var(--text_span);
         }
     }
 
@@ -71,7 +71,7 @@ main {
                     /* border-style: inset; */
                     /* border: 2px 2px solid grey; */
                     box-shadow: inset 0 0 3px 3px rgb(187, 185, 185);
-                    background-color: whitesmoke;
+                    background-color: rgba(245, 245, 245, 0.945);
                     padding: 15px;
                 }
 
@@ -101,12 +101,12 @@ main {
                 }
 
                 .search_btn:hover {
-                    background-color: rgb(40, 39, 39);
+                    background-color: var(--btn_hover_bg);
                     border: 2px solid rgb(167, 164, 164);
                 }
 
                 .search_btn:active {
-                    box-shadow: 2px 3px 2px 2px rgb(0, 0, 0);
+                    box-shadow: 2px 3px 2px 2px var(--btn_shadow_dark);
                     transform: translateY(4px);
                 }
 
@@ -120,9 +120,9 @@ main {
                     width: 50px;
                     height: 50px;
                     border-radius: 50%;
-                    background-color: rgb(121, 120, 120);
+                    background-color: var(--text_medium);
                     border: none;
-                    box-shadow: 2px 3px 2px 2px rgb(40, 39, 39);
+                    box-shadow: 2px 3px 2px 2px var(--btn_shadow);
 
                     img {
                         width: 80%;
@@ -131,12 +131,12 @@ main {
                 }
 
                 .surprise_btn:hover {
-                    background-color: rgb(40, 39, 39);
-                    border: 2px solid rgb(167, 164, 164);
+                    background-color: var(btn_hover_bg);
+                    border: 2px solid var(--btn_hover_border);
                 }
 
                 .surprise_btn:active {
-                    box-shadow: 2px 3px 2px 2px rgb(0, 0, 0);
+                    box-shadow: 2px 3px 2px 2px var(--btn_shadow_dark);
                     transform: translateY(4px);
                 }
             }
@@ -145,7 +145,7 @@ main {
         .hint_message {
             margin-left: 30px;
             font-size: 1rem;
-            color: rgb(207, 93, 93);
+            color: var(--text_hint_msg);
             opacity: 1;
         }
 
@@ -162,7 +162,7 @@ main {
     /* position: absolute;
     bottom: 0; */
     font-size: 1.15rem;
-    color: white;
+    color: var(--text_highlight);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -188,6 +188,7 @@ main {
         justify-content: center;
         flex-wrap: wrap;
         padding: 50px 0 0;
+        margin-bottom: 20px;
 
         li {
             display: contents;
@@ -201,7 +202,7 @@ main {
                 justify-content: space-between;
                 margin: 0 0.78% 50px;
                 background: none;
-                background-color: rgba(255, 254, 254, 0.486);
+                background-color: var(--pkm_cards_main_color);
                 border-top-left-radius: 5%;
                 border-top-right-radius: 5%;
                 transition:
@@ -238,13 +239,13 @@ main {
 
                         p {
                             font-size: 1rem;
-                            color: rgb(121, 120, 120);
+                            color: var(--text_medium);
                         }
 
                         h2 {
                             font-size: 1.5rem;
                             font-weight: 600;
-                            color: var(--header_footer_bg_color);
+                            color: var(--text_dark);
                         }
                     }
 
@@ -259,7 +260,7 @@ main {
                         .single_type {
                             width: 40%;
                             text-align: center;
-                            color: var(--pkm_container_bg_color);
+                            color: var(--text_highlight);
                             text-shadow: 1px 1px 1px rgb(77, 75, 75);
                             font-weight: 700;
                             line-height: 140%;
@@ -268,7 +269,7 @@ main {
 
                             p {
                                 font-size: 1 rem;
-                                color: white;
+                                color: var(--text_highlight);
                             }
                         }
                     }
@@ -288,7 +289,7 @@ main {
                 .error_msg {
                     font-size: 2rem;
                     font-weight: 600;
-                    color: var(--header_footer_bg_color);
+                    color: var(--text_dark);
                     text-align: center;
                     line-height: 140%;
                 }
@@ -297,6 +298,22 @@ main {
                     width: 90px;
                     height: auto;
                 }
+            }
+        }
+
+        .no_result_box {
+            font-size: 1.25rem;
+            font-weight: 600;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            align-items: center;
+            margin: 60px;
+
+            img {
+                width: 80px;
+                height: auto;
             }
         }
     }
@@ -315,8 +332,8 @@ main {
         height: 90px;
         border: none;
         border-radius: 50px;
-        background-color: rgb(121, 120, 120);
-        box-shadow: 2px 3px 2px 2px rgb(40, 39, 39);
+        background-color: var(--text_medium);
+        box-shadow: 2px 3px 2px 2px var(--btn_shadow);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -331,17 +348,17 @@ main {
         p {
             font-size: 1.25rem;
             font-weight: 700;
-            color: white;
+            color: var(--text_highlight);
         }
     }
 
     button:hover {
-        background-color: rgb(40, 39, 39);
-        border: 2px solid rgb(167, 164, 164);
+        background-color: var(--btn_hover_bg);
+        border: 2px solid var(--btn_hover_border);
     }
 
     button:active {
-        box-shadow: 2px 3px 2px 2px rgb(0, 0, 0);
+        box-shadow: 2px 3px 2px 2px var(--btn_shadow_dark);
         transform: translateY(4px);
     }
 }
