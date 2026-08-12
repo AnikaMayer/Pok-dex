@@ -78,7 +78,8 @@
                 background-color: var(--pkm_container_bg_color);
                 display: flex;
                 flex-direction: column;
-                gap: 40px;
+                /* gap: 40px; */
+                gap: 60px;
                 padding: 20px 24px;
 
                 .main_info {
@@ -378,23 +379,23 @@
                             }
                         }
 
-                        .first:after {
+                        .middle:before {
                             content: "⟩";
                             font-size: 300%;
                             font-weight: 800;
                             color: var(--text_highlight);
                             position: absolute;
-                            left: 120%;
+                            left: -30%;
                             top: 15%;
                         }
 
-                        .middle:after {
+                        .last:before {
                             content: "⟩";
                             font-size: 300%;
                             font-weight: 800;
                             color: var(--text_highlight);
                             position: absolute;
-                            left: 120%;
+                            left: -30%;
                             top: 15%;
                         }
                     }

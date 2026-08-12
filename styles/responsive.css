@@ -34,9 +34,10 @@
             .dialog_main {
                 .dialog_content {
                     padding: 20px clamp(10px, calc(-17.586px + 8.621vw), 40px);
+                    gap: 45px;
 
                     .main_info {
-                        height: 60dvh;
+                        height: 460px;
                         width: 100%;
                         flex-direction: column;
                         justify-content: flex-start;
@@ -120,15 +121,15 @@
                             align-items: center;
                             flex-wrap: nowrap;
 
-                            .first:after {
+                            .middle:before {
                                 left: 48%;
-                                top: 101%;
+                                top: -30%;
                                 rotate: 90deg;
                             }
 
-                            .middle:after {
+                            .last:before {
                                 left: 48%;
-                                top: 101%;
+                                top: -30%;
                                 rotate: 90deg;
                             }
                         }
