@@ -123,19 +123,64 @@ function changeGenderImg() {}
 
 // #region evolutions
 
+// async function renderEvoChain(details) {
+//     const evoBox = document.getElementById("evo_box");
+//     evoBox.innerHTML = "";
+
+//     for (let i = 0; i < details.evolutions.length; i++) {
+//         const evoName = details.evolutions[i];
+//         const evoData = await getEvoData(evoName);
+//         const stageClass = getStageClass(i, details.evolutions.length);
+
+//         evoBox.innerHTML += evoChainTemplate(evoData, stageClass);
+//         renderEvoTypes(evoData);
+//         await loadEvoImg(evoData);
+//     }
+// }
+
+// .some as alternative for .find or for-loop to toggle "branched"-class for evo-chain
 async function renderEvoChain(details) {
     const evoBox = document.getElementById("evo_box");
     evoBox.innerHTML = "";
-
+    evoBox.classList.toggle(
+        "branched",
+        details.evolutions.some((stage) => stage.length > 1),
+    );
     for (let i = 0; i < details.evolutions.length; i++) {
-        const evoName = details.evolutions[i];
-        const evoData = await getEvoData(evoName);
+        const evoStage = details.evolutions[i];
         const stageClass = getStageClass(i, details.evolutions.length);
-
-        evoBox.innerHTML += evoChainTemplate(evoData, stageClass);
-        renderEvoTypes(evoData);
-        await loadEvoImg(evoData);
+        await renderEvoStage(evoStage, stageClass, evoBox);
     }
+}
+
+async function renderEvoStage(evoStage, stageClass, evoBox) {
+    if (evoStage.length === 1) {
+        await renderSingleEvo(evoStage[0], stageClass, evoBox);
+    } else {
+        await renderBranchEvo(evoStage, stageClass, evoBox);
+    }
+}
+
+async function renderSingleEvo(evoName, stageClass, evoBox) {
+    const evoData = await getEvoData(evoName);
+    evoBox.innerHTML += evoChainTemplate(evoData, stageClass);
+    renderEvoTypes(evoData);
+    await loadEvoImg(evoData);
+}
+
+async function renderBranchEvo(evoStage, stageClass, evoBox) {
+    evoBox.innerHTML += evoBranchTemplate(stageClass);
+    const branchWrap = evoBox.lastElementChild.querySelector(".evo_branch_wrap");
+    for (let y = 0; y < evoStage.length; y++) {
+        await renderBranchCard(evoStage[y], branchWrap);
+    }
+}
+
+async function renderBranchCard(evoName, branchWrap) {
+    const evoData = await getEvoData(evoName);
+    branchWrap.innerHTML += evoCardTemplate(evoData);
+    renderEvoTypes(evoData);
+    await loadEvoImg(evoData);
 }
 
 async function getEvoData(evoName) {
@@ -148,11 +193,12 @@ async function getEvoData(evoName) {
     }
 }
 
+// first Pkm gets class "last", if it has no evolutions -> better styling for evo-arrow for css
 function getStageClass(index, evoLength) {
-    if (index === 0) {
-        return "first";
-    } else if (index === evoLength - 1) {
+    if (index === evoLength - 1) {
         return "last";
+    } else if (index === 0) {
+        return "first";
     } else {
         return "middle";
     }

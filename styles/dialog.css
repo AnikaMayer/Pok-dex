@@ -316,6 +316,7 @@
                         height: fit-content;
                         display: flex;
                         justify-content: center;
+                        align-items: center;
                         gap: 70px;
                         padding: 10px;
 
@@ -324,7 +325,18 @@
                             height: fit-content;
                             display: flex;
 
+                            .evo_branch_wrap {
+                                /* width: 700px;
+                                height: 400px; */
+                                /* background-color: pink; */
+                                display: flex;
+                                flex-wrap: wrap;
+                                justify-content: center;
+                                gap: 16px;
+                            }
+
                             .evo_wrapper {
+                                width: 140px;
                                 display: flex;
                                 flex-direction: column;
                                 gap: 8px;
@@ -397,6 +409,31 @@
                             position: absolute;
                             left: -30%;
                             top: 15%;
+                        }
+                    }
+
+                    .evo_chain.branched {
+                        flex-direction: column;
+                        gap: 40px;
+
+                        .evo_stage {
+                            justify-content: center;
+                            align-self: center;
+                        }
+
+                        .evo_stage.has_branch {
+                            width: 100%;
+
+                            .evo_branch_wrap {
+                                width: 100%;
+                            }
+                        }
+
+                        .middle:before,
+                        .last:before {
+                            left: 48%;
+                            top: calc(-1 var(--prev-height, 0px) / 2 - -55px);
+                            rotate: 90deg;
                         }
                     }
                 }

@@ -104,15 +104,27 @@ function dialogTemplate(details) {
 
 function evoChainTemplate(evoData, stageClass) {
     return /*html*/ `
-        <div class="evo_stage ${stageClass}">
-            <div class="evo_wrapper">
-                <div id="evo_img_${evoData.id}" class="evo_img"></div>
-                <div class="evo_title">
-                    <p class="evo_name">${capitalizeLetter(evoData.name)}</p>
-                    <p class="evo_nr">Nr. ${padNumber(evoData.id)}</p>
-                </div>
-                <div id="evo_type_${evoData.id}" class="evo_type"></div>
+        <div class="evo_stage ${stageClass}">${evoCardTemplate(evoData)}</div>
+    `;
+}
+
+function evoCardTemplate(evoData) {
+    return /*html*/ `
+        <div class="evo_wrapper">
+            <div id="evo_img_${evoData.id}" class="evo_img"></div>
+            <div class="evo_title">
+                <p class="evo_name">${capitalizeLetter(evoData.name)}</p>
+                <p class="evo_nr">Nr. ${padNumber(evoData.id)}</p>
             </div>
+            <div id="evo_type_${evoData.id}" class="evo_type"></div>
+        </div>
+    `;
+}
+
+function evoBranchTemplate(stageClass) {
+    return /*html*/ `
+        <div class="evo_stage ${stageClass} has_branch">
+            <div class="evo_branch_wrap"></div>
         </div>
     `;
 }

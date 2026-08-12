@@ -110,19 +110,27 @@ function getCtgry(respFromJson) {
     return respFromJson.genera.find((element) => element.language.name === "en").genus;
 }
 
+// get Details for evoChain-array -> fetch from evo-url, create 3 array for every evo-stage
 async function getEvoChain(respFromJson) {
-    const evoChain = [];
     const evoResp = await fetch(respFromJson.evolution_chain.url);
     const evoRespFromJson = await evoResp.json();
     const chainInfo = evoRespFromJson.chain;
-    evoChain.push(chainInfo.species.name);
+    const firstStage = [chainInfo.species.name];
+    const secondStage = [];
+    const thirdStage = [];
     chainInfo.evolves_to.forEach((firstEvo) => {
-        evoChain.push(firstEvo.species.name);
+        secondStage.push(firstEvo.species.name);
         firstEvo.evolves_to.forEach((secondEvo) => {
-            evoChain.push(secondEvo.species.name);
+            thirdStage.push(secondEvo.species.name);
         });
     });
-    return evoChain;
+    return createEvoChainArray(firstStage, secondStage, thirdStage); // create final evoChain-array
+}
+
+// all 3 evo-stage-array com together in one final evo-array, including every evo-stage
+function createEvoChainArray(firstStage, secondStage, thirdStage) {
+    const evoChain = [firstStage, secondStage, thirdStage];
+    return evoChain.filter((stage) => stage.length > 0);
 }
 
 function getStats(statName, pkmData) {
