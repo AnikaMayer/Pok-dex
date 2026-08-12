@@ -1,8 +1,8 @@
 function renderPkmCardsTemplate(singlePokemon) {
     return /*html*/ `
         <li>
-            <button aria-label="show Pokemon details" class="pokemon_card" onclick="openDialog(${singlePokemon.id})">
-                <div id="pkm_img_${singlePokemon.id}" class="pkm_img_box"></div>
+            <button data-id="card" aria-label="show Pokemon details" class="pokemon_card" onclick="openDialog(${singlePokemon.id})">
+                <div data-id="card-image" id="pkm_img_${singlePokemon.id}" class="pkm_img_box"></div>
                 <div class="name_and_Type">
                     <div class="pkm_name">
                         <p>Nr. ${padNumber(singlePokemon.id)}</p>
@@ -26,7 +26,7 @@ function renderTypesTemplate(singlePokemon, y) {
 function noResultsTemplate(searchInput) {
     return /*html*/ `
         <div class="no_result_box">
-            <p class="error_msg">Oops! The Pokéball missed!<br>Your search for „${searchInput}" didn´t catch any Pokémon. Try again!</p>
+            <p data-id="not-found" class="error_msg">Oops! The Pokéball missed!<br>Your search for „${searchInput}" didn´t catch any Pokémon. Try again!</p>
             <img src="./assets/img/pkm_relaxo_front.svg" alt="Image of Relaxo">
         </div>
     `;
@@ -38,13 +38,13 @@ function dialogTemplate(details) {
             <header class="dialog_header">
                 <p>Nr. ${padNumber(details.id)}</p>
                 <h2>${capitalizeLetter(details.name)}</h2>
-                <button onclick="closeDialog()">X</button>
+                <button data-id="close-dialog-button" onclick="closeDialog()">X</button>
             </header>
             <main class="dialog_main">            
                 <div class="dialog_content">
                     <div class="main_info">
                         <div class="img_type_box">
-                            <div id="dialog_img_${details.id}" class="dialog_img"></div>
+                            <div data-id="dialog-image" id="dialog_img_${details.id}" class="dialog_img"></div>
                             <div id="data_type_${details.id}" class="data_type"></div>
                         </div>
                         <div class="detail_info_box">
@@ -95,8 +95,8 @@ function dialogTemplate(details) {
                 </div>
             </main>
             <footer class="dialog_footer">
-                <button id="prev_btn" onclick="goToPrevPokemon()"><</button>
-                <button id="next_btn" onclick="goToNextPokemon()">></button>
+                <button data-id="prev-button" id="prev_btn" onclick="goToPrevPokemon()"><</button>
+                <button data-id="next-button" id="next_btn" onclick="goToNextPokemon()">></button>
             </footer>
         </section>
     `;

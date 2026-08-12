@@ -32,6 +32,7 @@
                 <div class="search_wrapper">
                     <div class="input_box">
                         <input
+                            data-id="search-input"
                             id="search_input"
                             class="search_field"
                             oninput="checkSearchInput()"
@@ -40,7 +41,13 @@
                         />
                     </div>
                     <div class="btn_wrapper">
-                        <button id="search_button" class="search_btn" disabled onclick="searchPkm()">
+                        <button
+                            data-id="search-button"
+                            id="search_button"
+                            class="search_btn"
+                            disabled
+                            onclick="searchPkm()"
+                        >
                             <img
                                 id="search_img"
                                 class="hide_search_img"
@@ -56,7 +63,7 @@
                 <p id="hint_msg" class="hint_message hide_hint_msg">Please enter at least 3 characters!</p>
             </nav>
         </header>
-        <main>
+        <main data-id="content">
             <section class="pokemon_container">
                 <ul id="pokemon_box" class="pokemon_wrap"></ul>
                 <div id="loading_screen" class="loading_spin hide_spin">
@@ -64,7 +71,7 @@
                     <p class="loading_msg">...loading</p>
                 </div>
                 <div class="load_more_box">
-                    <button id="load_btn" onclick="loadMorePkm()">
+                    <button data-id="load-more-button" id="load_btn" onclick="loadMorePkm()">
                         <img src="./assets/img/show-more_pkm_icon.png" alt="Pokeballs-Icon" />
                         <p>Show More</p>
                     </button>
@@ -75,6 +82,7 @@
                 </div>
             </section>
             <dialog
+                data-id="dialog"
                 aria-label="show Pokemon details"
                 id="details_dialog"
                 class="dialog_container"
