@@ -7,12 +7,12 @@ async function openDialog(pkmId) {
     const singlePokemon = loadedPkm.find((pkm) => pkm.id === pkmId) || searchedGlobal.find((pkm) => pkm.id === pkmId);
     await getMoreDetails(singlePokemon);
     const details = pkmDetails.find((pkmDetail) => pkmDetail.id === pkmId);
-
     renderDialogContent(details);
     loadDialogImg(singlePokemon, details);
     renderDialogTypes(details);
     renderEvoChain(details);
     toggleDialogButtons(displayedPkm);
+    preloadShinyImg(details.id);
 }
 
 function getDisplayedPkm() {
@@ -94,6 +94,55 @@ function renderDialogTypes(details) {
     for (let y = 0; y < details.type.length; y++) {
         pkmTypesRef.innerHTML += renderTypesTemplate(details, y);
     }
+}
+
+function preloadShinyImg(pkmId) {
+    const pkmShiny = loadedInfo.find((pkm) => pkm.id === pkmId);
+    const shinyUrl = pkmShiny.sprites.other["official-artwork"].front_shiny;
+
+    if (shinyUrl) {
+        new Image().src = shinyUrl;
+    }
+}
+
+function hasShinySprite(pkmId) {
+    const pkmShiny = loadedInfo.find((pkm) => pkm.id === pkmId);
+    return pkmShiny.sprites.other["official-artwork"].front_shiny;
+}
+
+function toggleImg(variant, pkmId) {
+    if (variant === "shiny" && !hasShinySprite(pkmId)) {
+        return;
+    }
+    const pkmShiny = loadedInfo.find((pkm) => pkm.id === pkmId);
+    const shinyImg = pkmShiny.sprites.other["official-artwork"];
+    const pkmSprite = getSpriteUrl(variant, shinyImg);
+
+    if (!pkmSprite) {
+        return;
+    }
+    renderPkmImg(pkmId, pkmSprite, pkmShiny.name);
+}
+
+function getSpriteUrl(variant, shinyImg) {
+    let spriteUrl;
+
+    if (variant === "shiny") {
+        spriteUrl = shinyImg.front_shiny;
+    } else {
+        spriteUrl = shinyImg.front_default;
+    }
+
+    return spriteUrl;
+}
+
+function renderPkmImg(pkmId, pkmSprite, pkmName) {
+    const dialogImgRef = document.getElementById(`dialog_img_${pkmId}`);
+    const pkmImg = document.createElement("img");
+    pkmImg.src = pkmSprite;
+    pkmImg.alt = capitalizeLetter(pkmName);
+    dialogImgRef.innerHTML = "";
+    dialogImgRef.appendChild(pkmImg);
 }
 
 //#endregion

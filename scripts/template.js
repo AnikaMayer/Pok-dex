@@ -34,7 +34,7 @@ function noResultsTemplate(searchInput) {
 
 function dialogTemplate(details) {
     return /*html*/ `
-        <section class="dialog_box" onclick="bubblingProtection(event)">
+        <section data-id="overlay-${capitalizeLetter(details.name)}" class="dialog_box" onclick="bubblingProtection(event)">
             <header class="dialog_header">
                 <p>Nr. ${padNumber(details.id)}</p>
                 <h2>${capitalizeLetter(details.name)}</h2>
@@ -48,12 +48,12 @@ function dialogTemplate(details) {
                             <div id="data_type_${details.id}" class="data_type"></div>
                         </div>
                         <div class="detail_info_box">
-                            <div class="gender_btn">
-                                <button aria-label="show female Version" class="female">
-                                    <img src="./assets/img/icon_female_pink.svg" alt="female-gender-icon">
+                            <div class="toggle_img">
+                                <button aria-label="show shiny Version" class="shiny" onclick="toggleImg('shiny', ${details.id})">
+                                    <img src="./assets/img/icon_shiny_pink.svg" alt="shiny-gender-icon">
                                 </button>
-                                <button aria-label="show male Version" class="male">
-                                    <img src="./assets/img/icon_male_blue.svg" alt="male-gender-icon">
+                                <button aria-label="show default Version" class="default" onclick="toggleImg('default', ${details.id})">
+                                    <img src="./assets/img/icon_default_blue.svg" alt="default-gender-icon">
                                 </button>
                             </div>
                             <p class="description">${details.description}</p>
