@@ -26,10 +26,10 @@
     --btn_shadow: rgb(40, 39, 39);
     --btn_shadow_dark: rgb(0, 0, 0);
 
-    --btn_female_bg: #eed3d9;
-    --btn_female_hover: #eb9aae;
-    --btn_male_bg: #d6e3ee;
-    --btn_male_hover: #a3cdec;
+    --btn_shiny_bg: rgba(121, 120, 120);
+    --btn_shiny_hover: rgb(65, 61, 61);
+    --btn_default_bg: rgba(121, 120, 120);
+    --btn_default_hover: rgb(65, 61, 61);
     --btn_shadow_light: rgb(187, 185, 185);
-    --btn_shadow_dark: rgb(97, 94, 94);
+    --btn_shadow_dark: rgb(7, 7, 7);
 }

@@ -50,10 +50,10 @@ function dialogTemplate(details) {
                         <div class="detail_info_box">
                             <div class="toggle_img">
                                 <button aria-label="show shiny Version" class="shiny" onclick="toggleImg('shiny', ${details.id})">
-                                    <img src="./assets/img/icon_shiny_pink.svg" alt="shiny-gender-icon">
+                                    <img src="./assets/img/shiny_icon.png" alt="shiny-icon">
                                 </button>
                                 <button aria-label="show default Version" class="default" onclick="toggleImg('default', ${details.id})">
-                                    <img src="./assets/img/icon_default_blue.svg" alt="default-gender-icon">
+                                    <img src="./assets/img/default_icon.png" alt="default-icon">
                                 </button>
                             </div>
                             <p class="description">${details.description}</p>
