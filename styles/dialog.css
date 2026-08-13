@@ -76,7 +76,6 @@
             .dialog_content {
                 width: 100%;
                 height: fit-content;
-                /* background-color: var(--dialog_content_bg); */
                 background-color: rgba(238, 233, 233, 0.895);
                 background-image: url("../assets/img/pkm_background.png");
                 background-attachment: fixed;
