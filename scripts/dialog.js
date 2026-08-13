@@ -172,21 +172,6 @@ function changeGenderImg() {}
 
 // #region evolutions
 
-// async function renderEvoChain(details) {
-//     const evoBox = document.getElementById("evo_box");
-//     evoBox.innerHTML = "";
-
-//     for (let i = 0; i < details.evolutions.length; i++) {
-//         const evoName = details.evolutions[i];
-//         const evoData = await getEvoData(evoName);
-//         const stageClass = getStageClass(i, details.evolutions.length);
-
-//         evoBox.innerHTML += evoChainTemplate(evoData, stageClass);
-//         renderEvoTypes(evoData);
-//         await loadEvoImg(evoData);
-//     }
-// }
-
 // .some as alternative for .find or for-loop to toggle "branched"-class for evo-chain
 async function renderEvoChain(details) {
     const evoBox = document.getElementById("evo_box");
