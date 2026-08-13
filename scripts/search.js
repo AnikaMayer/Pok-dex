@@ -108,6 +108,11 @@ async function getRandomPkm() {
 
 // give random name into search-input and into global-search-array, then render Card
 function displayRandomResult(pokemonObject) {
+    const backBtn = document.getElementById("back_btn");
+    const loadBtn = document.getElementById("load_btn");
+    backBtn.classList.toggle("hide_back_btn", false);
+    loadBtn.classList.toggle("hide_load_btn", true);
+
     const searchInputRef = document.getElementById("search_input");
     searchInputRef.value = pokemonObject.name;
     checkSearchInput();
