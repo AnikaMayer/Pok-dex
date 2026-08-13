@@ -171,4 +171,8 @@ main {
         font-size: 1.15rem;
         color: var(--text_highlight);
     }
+
+    a:hover {
+        color: var(--text_light);
+    }
 }
