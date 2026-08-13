@@ -14,6 +14,13 @@
     --text_hint_msg: rgb(207, 93, 93);
     --text_shadow_types: rgb(77, 75, 75);
 
+    --dialog_header_footer_bg: rgb(65, 61, 61);
+    --dialog_content_bg: rgb(238, 233, 233);
+    --dialog_text_highlight: rgb(238, 233, 233);
+    --dialog_text_light: rgb(223, 213, 213);
+    --dialog_text_medium: rgb(121, 120, 120);
+    --dialog_text_dark: rgb(65, 61, 61);
+
     --btn_hover_bg: rgb(40, 39, 39);
     --btn_hover_border: rgb(167, 164, 164);
     --btn_shadow: rgb(40, 39, 39);
