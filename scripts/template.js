@@ -1,7 +1,7 @@
 function renderPkmCardsTemplate(singlePokemon) {
     return /*html*/ `
         <li>
-            <button data-id="card" aria-label="show Pokemon details" class="pokemon_card ${singlePokemon.type[0]}" onclick="openDialog(${singlePokemon.id})">
+            <button data-id="card" aria-label="show details for ${capitalizeLetter(singlePokemon.name)}" class="pokemon_card ${singlePokemon.type[0]}" onclick="openDialog(${singlePokemon.id})">
                 <div data-id="card-image" id="pkm_img_${singlePokemon.id}" class="pkm_img_box"></div>
                 <div class="name_and_Type">
                     <div class="pkm_name">
@@ -38,7 +38,7 @@ function dialogTemplate(details) {
             <header class="dialog_header">
                 <p>Nr. ${padNumber(details.id)}</p>
                 <h2>${capitalizeLetter(details.name)}</h2>
-                <button data-id="close-dialog-button" onclick="closeDialog()">X</button>
+                <button aria-label="close dialog" data-id="close-dialog-button" onclick="closeDialog()">X</button>
             </header>
             <main class="dialog_main">            
                 <div class="dialog_content">
@@ -49,10 +49,10 @@ function dialogTemplate(details) {
                         </div>
                         <div class="detail_info_box">
                             <div class="gender_btn">
-                                <button class="female">
+                                <button aria-label="show female Version" class="female">
                                     <img src="./assets/img/icon_female_pink.svg" alt="female-gender-icon">
                                 </button>
-                                <button class="male">
+                                <button aria-label="show male Version" class="male">
                                     <img src="./assets/img/icon_male_blue.svg" alt="male-gender-icon">
                                 </button>
                             </div>
@@ -95,8 +95,8 @@ function dialogTemplate(details) {
                 </div>
             </main>
             <footer class="dialog_footer">
-                <button data-id="prev-button" id="prev_btn" onclick="goToPrevPokemon()"><</button>
-                <button data-id="next-button" id="next_btn" onclick="goToNextPokemon()">></button>
+                <button aria-label="show previous Pokemon" data-id="prev-button" id="prev_btn" onclick="goToPrevPokemon()"><</button>
+                <button aria-label="show next Pokemon" data-id="next-button" id="next_btn" onclick="goToNextPokemon()">></button>
             </footer>
         </section>
     `;

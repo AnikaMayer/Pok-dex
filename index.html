@@ -42,6 +42,7 @@
                     </div>
                     <div class="btn_wrapper">
                         <button
+                            aria-label="search for Pokemon"
                             data-id="search-button"
                             id="search_button"
                             class="search_btn"
@@ -55,7 +56,12 @@
                                 alt="Pokeball-Icon"
                             />
                         </button>
-                        <button id="surprise_button" class="surprise_btn" onclick="searchRandomPkm()">
+                        <button
+                            aria-label="show random Pokemon"
+                            id="surprise_button"
+                            class="surprise_btn"
+                            onclick="searchRandomPkm()"
+                        >
                             <img src="./assets/img/poke_dice_random.png" alt="Dice with Pokemon" />
                         </button>
                     </div>
@@ -71,11 +77,16 @@
                     <p class="loading_msg">...loading</p>
                 </div>
                 <div class="load_more_box">
-                    <button data-id="load-more-button" id="load_btn" onclick="loadMorePkm()">
+                    <button
+                        aria-label="load more Pokemon"
+                        data-id="load-more-button"
+                        id="load_btn"
+                        onclick="loadMorePkm()"
+                    >
                         <img src="./assets/img/show-more_pkm_icon.png" alt="Pokeballs-Icon" />
                         <p>Show More</p>
                     </button>
-                    <button id="back_btn" class="hide_back_btn" onclick="goBack()">
+                    <button aria-label="reset Pokemon list" id="back_btn" class="hide_back_btn" onclick="goBack()">
                         <img src="./assets/img/pokedex_go_back_icon.png" alt="Pokedex-Icon" />
                         <p>Go Back</p>
                     </button>
@@ -83,7 +94,7 @@
             </section>
             <dialog
                 data-id="dialog"
-                aria-label="show Pokemon details"
+                aria-label="Pokemon Details Dialog"
                 id="details_dialog"
                 class="dialog_container"
                 onclick="closeDialog()"
