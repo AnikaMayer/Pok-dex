@@ -111,6 +111,13 @@
                 visibility: hidden;
             }
         }
+        .dialog_main .dialog_content .main_info .detail_info_box {
+            .toggle_img {
+                .hide_img_btn {
+                    display: none;
+                }
+            }
+        }
     }
 }
 

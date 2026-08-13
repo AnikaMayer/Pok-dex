@@ -195,7 +195,9 @@
 
 .pokemon_card.grass:hover {
     transform: translateY(-6px);
-    box-shadow: 0 10px 20px #2e3d188f;
+    box-shadow:
+        0 4px 8px 0 #2e3d188f,
+        0 6px 20px 0 #2e3d188f;
 
     .pkm_img_box:hover {
         background-color: #759b3c70;
@@ -204,7 +206,9 @@
 
 .pokemon_card.fire:hover {
     transform: translateY(-6px);
-    box-shadow: 0 10px 20px #80411569;
+    box-shadow:
+        0 4px 8px 0 #80411569,
+        0 6px 20px 0 #80411569;
 
     .pkm_img_box {
         background-color: #d66c2150;
@@ -213,7 +217,9 @@
 
 .pokemon_card.water:hover {
     transform: translateY(-6px);
-    box-shadow: 0 10px 20px #4087b681;
+    box-shadow:
+        0 4px 8px 0 #326b9181,
+        0 6px 20px 0 #326b9181;
 
     .pkm_img_box {
         background-color: #4087b654;
@@ -222,7 +228,9 @@
 
 .pokemon_card.poison:hover {
     transform: translateY(-6px);
-    box-shadow: 0 10px 20px #9666a328;
+    box-shadow:
+        0 4px 8px 0 #67457075,
+        0 6px 20px 0 #67457075;
 
     .pkm_img_box {
         background-color: #9666a356;
@@ -231,7 +239,9 @@
 
 .pokemon_card.flying:hover {
     transform: translateY(-6px);
-    box-shadow: 0 10px 20px #75949c62;
+    box-shadow:
+        0 4px 8px 0 #75949c62,
+        0 6px 20px 0 #75949c62;
 
     .pkm_img_box {
         background-color: #75949c59;
@@ -240,7 +250,9 @@
 
 .pokemon_card.bug:hover {
     transform: translateY(-6px);
-    box-shadow: 0 10px 20px #a8ad4677;
+    box-shadow:
+        0 4px 8px 0 #74773077,
+        0 6px 20px 0 #74773077;
 
     .pkm_img_box {
         background-color: #a8ad465b;
@@ -249,7 +261,9 @@
 
 .pokemon_card.normal:hover {
     transform: translateY(-6px);
-    box-shadow: 0 10px 20px #949c9e9a;
+    box-shadow:
+        0 4px 8px 0 #6065669a,
+        0 6px 20px 0 #6065669a;
 
     .pkm_img_box {
         background-color: #949c9ea2;
@@ -258,7 +272,9 @@
 
 .pokemon_card.electric:hover {
     transform: translateY(-6px);
-    box-shadow: 0 10px 20px #ca9f138a;
+    box-shadow:
+        0 4px 8px 0 #a781048f,
+        0 6px 20px 0 #a781048f;
 
     .pkm_img_box {
         background-color: #ca9f136b;
@@ -267,7 +283,9 @@
 
 .pokemon_card.rock:hover {
     transform: translateY(-6px);
-    box-shadow: 0 10px 20px #a38b21a1;
+    box-shadow:
+        0 4px 8px 0 #a38b21a1,
+        0 6px 20px 0 #a38b21a1;
 
     .pkm_img_box {
         background-color: #a38b216c;
@@ -276,7 +294,9 @@
 
 .pokemon_card.ground:hover {
     transform: translateY(-6px);
-    box-shadow: 0 10px 20px #8365129a;
+    box-shadow:
+        0 4px 8px 0 #8365129a,
+        0 6px 20px 0 #8365129a;
 
     .pkm_img_box {
         background-color: #83651267;
@@ -285,7 +305,9 @@
 
 .pokemon_card.ice:hover {
     transform: translateY(-6px);
-    box-shadow: 0 10px 20px #3fb1d49a;
+    box-shadow:
+        0 4px 8px 0 #3fb1d49a,
+        0 6px 20px 0 #3fb1d49a;
 
     .pkm_img_box {
         background-color: #51c4e75d;
@@ -294,7 +316,9 @@
 
 .pokemon_card.fighting:hover {
     transform: translateY(-6px);
-    box-shadow: 0 10px 20px #a15e359c;
+    box-shadow:
+        0 4px 8px 0 #a15e359c,
+        0 6px 20px 0 #a15e359c;
 
     .pkm_img_box {
         background-color: #a15e355b;
@@ -303,7 +327,9 @@
 
 .pokemon_card.psychic:hover {
     transform: translateY(-6px);
-    box-shadow: 0 10px 20px #b968979c;
+    box-shadow:
+        0 4px 8px 0 #b968979c,
+        0 6px 20px 0 #b968979c;
 
     .pkm_img_box {
         background-color: #b9689757;
@@ -312,7 +338,9 @@
 
 .pokemon_card.ghost:hover {
     transform: translateY(-6px);
-    box-shadow: 0 10px 20px #504168b2;
+    box-shadow:
+        0 4px 8px 0 #504168b2,
+        0 6px 20px 0 #504168b2;
 
     .pkm_img_box {
         background-color: #50416862;
@@ -321,7 +349,9 @@
 
 .pokemon_card.dragon:hover {
     transform: translateY(-6px);
-    box-shadow: 0 10px 20px #813ad3ab;
+    box-shadow:
+        0 4px 8px 0 #813ad3ab,
+        0 6px 20px 0 #813ad3ab;
 
     .pkm_img_box {
         background-color: #813ad356;
@@ -330,7 +360,9 @@
 
 .pokemon_card.dark:hover {
     transform: translateY(-6px);
-    box-shadow: 0 10px 20px #494646bb;
+    box-shadow:
+        0 4px 8px 0 #494646bb,
+        0 6px 20px 0 #494646bb;
 
     .pkm_img_box {
         background-color: #4946469c;
@@ -339,7 +371,9 @@
 
 .pokemon_card.steel:hover {
     transform: translateY(-6px);
-    box-shadow: 0 10px 20px #859996d7;
+    box-shadow:
+        0 4px 8px 0 #859996d7,
+        0 6px 20px 0 #859996d7;
 
     .pkm_img_box {
         background-color: #859996a8;
@@ -348,10 +382,92 @@
 
 .pokemon_card.fairy:hover {
     transform: translateY(-6px);
-    box-shadow: 0 10px 20px #cf9db2c4;
+    box-shadow:
+        0 4px 8px 0 #b38397c4,
+        0 6px 20px 0 #b38397c4;
 
     .pkm_img_box {
         background-color: #cf9db277;
+    }
+}
+
+/* #endregion */
+
+/* #region dialog-img-background */
+
+.dialog_container .dialog_box .dialog_main .dialog_content {
+    .main_info .img_type_box {
+        .dialog_img.grass {
+            background-color: #759b3c33;
+        }
+
+        .dialog_img.fire {
+            background-color: #d66c2127;
+        }
+
+        .dialog_img.water {
+            background-color: #4087b623;
+        }
+
+        .dialog_img.poison {
+            background-color: #9666a328;
+        }
+
+        .dialog_img.flying {
+            background-color: #75949c36;
+        }
+
+        .dialog_img.bug {
+            background-color: #a8ad4628;
+        }
+
+        .dialog_img.normal {
+            background-color: #949c9e2f;
+        }
+
+        .dialog_img.electric {
+            background-color: #ca9f132f;
+        }
+
+        .dialog_img.rock {
+            background-color: #a38b213a;
+        }
+
+        .dialog_img.ground {
+            background-color: #83651241;
+        }
+
+        .dialog_img.ice {
+            background-color: #51c4e736;
+        }
+
+        .dialog_img.fighting {
+            background-color: #a15e3538;
+        }
+
+        .dialog_img.psychic {
+            background-color: #b968973a;
+        }
+
+        .dialog_img.ghost {
+            background-color: #50416833;
+        }
+
+        .dialog_img.dragon {
+            background-color: #813ad32d;
+        }
+
+        .dialog_img.dark {
+            background-color: #49464652;
+        }
+
+        .dialog_img.steel {
+            background-color: #8599964d;
+        }
+
+        .dialog_img.fairy {
+            background-color: #cf9db241;
+        }
     }
 }
 

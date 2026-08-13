@@ -46,16 +46,18 @@ function dialogTemplate(details) {
                 <div class="dialog_content">
                     <div class="main_info">
                         <div class="img_type_box">
-                            <div data-id="dialog-image" id="dialog_img_${details.id}" class="dialog_img"></div>
+                            <div data-id="dialog-image" id="dialog_img_${details.id}" class="dialog_img ${details.type[0]}"></div>
                             <div id="data_type_${details.id}" class="data_type"></div>
                         </div>
                         <div class="detail_info_box">
                             <div class="toggle_img">
-                                <button aria-label="show shiny Version" class="shiny" onclick="toggleImg('shiny', ${details.id})">
+                                <button aria-label="show shiny Version" id="shiny_btn_${details.id}" class="shiny" onclick="toggleImg('shiny', ${details.id})">
                                     <img src="./assets/img/shiny_icon.png" alt="shiny-icon">
+                                    <p>show shiny Version</p>
                                 </button>
-                                <button aria-label="show default Version" class="default" onclick="toggleImg('default', ${details.id})">
+                                <button aria-label="show default Version" id="default_btn_${details.id}" class="default hide_img_btn" onclick="toggleImg('default', ${details.id})">
                                     <img src="./assets/img/default_icon.png" alt="default-icon">
+                                    <p>show default Version</p>
                                 </button>
                             </div>
                             <p class="description">${details.description}</p>

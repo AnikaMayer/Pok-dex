@@ -18,6 +18,7 @@
     .dialog_container {
         .dialog_box {
             .dialog_header {
+                height: 70px;
                 padding: 20px clamp(10px, calc(-17.586px + 8.621vw), 40px);
 
                 h2 {
@@ -63,7 +64,7 @@
 
                             .toggle_img {
                                 button {
-                                    width: 45%;
+                                    width: 100%;
                                 }
                             }
                         }
@@ -121,15 +122,10 @@
                             align-items: center;
                             flex-wrap: nowrap;
 
-                            .middle:before {
-                                left: 48%;
-                                top: -30%;
-                                rotate: 90deg;
-                            }
-
-                            .last:before {
-                                left: 48%;
-                                top: -30%;
+                            .first:after,
+                            .middle:after {
+                                left: 47%;
+                                top: 102%;
                                 rotate: 90deg;
                             }
                         }
@@ -138,7 +134,13 @@
             }
 
             .dialog_footer {
+                height: 70px;
                 padding: 20px clamp(10px, calc(-17.586px + 8.621vw), 40px);
+
+                button {
+                    width: 80px;
+                    height: 38px;
+                }
             }
         }
     }
@@ -154,7 +156,7 @@
         flex-direction: column;
         justify-content: unset;
         gap: 30px;
-        padding: 20px 10px;
+        padding: 25px 10px;
 
         h1 {
             margin: 0;
@@ -208,12 +210,15 @@
 }
 
 @media screen and (min-width: 1441px) {
-    .main_header,
+    .main_header {
+        padding: 35px max(120px, calc(50% - 720px)) 10px;
+    }
+
     .main_footer {
         padding: 0px max(120px, calc(50% - 720px));
     }
 
     .pokemon_container {
-        padding: 60px max(120px, calc(50% - 720px)) 0;
+        padding: 135px max(120px, calc(50% - 720px)) 30px;
     }
 }

@@ -1,11 +1,16 @@
 .pokemon_container {
     width: 100%;
     height: 100%;
-    background-color: var(--content_bg_color);
+    /* background-color: var(--content_bg_color); */
+    background-color: rgba(223, 213, 213, 0.6);
+    background-image: url("../assets/img/pkm_background.png");
+    background-attachment: fixed;
+    background-position: center;
+    background-blend-mode: soft-light;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 60px clamp(0px, calc(-34.286px + 10.714vw), 120px) 0;
+    padding: 135px clamp(0px, calc(-34.286px + 10.714vw), 120px) 30px;
     flex: 1;
 
     .pokemon_wrap {

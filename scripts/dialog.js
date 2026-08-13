@@ -122,6 +122,7 @@ function toggleImg(variant, pkmId) {
         return;
     }
     renderPkmImg(pkmId, pkmSprite, pkmShiny.name);
+    replaceImgBtn(variant, pkmId);
 }
 
 function getSpriteUrl(variant, shinyImg) {
@@ -143,6 +144,19 @@ function renderPkmImg(pkmId, pkmSprite, pkmName) {
     pkmImg.alt = capitalizeLetter(pkmName);
     dialogImgRef.innerHTML = "";
     dialogImgRef.appendChild(pkmImg);
+}
+
+function replaceImgBtn(currentVariant, pkmId) {
+    const shinyBtn = document.getElementById(`shiny_btn_${pkmId}`);
+    const defaultBtn = document.getElementById(`default_btn_${pkmId}`);
+
+    if (currentVariant === "shiny") {
+        shinyBtn.classList.add("hide_img_btn");
+        defaultBtn.classList.remove("hide_img_btn");
+    } else {
+        shinyBtn.classList.remove("hide_img_btn");
+        defaultBtn.classList.add("hide_img_btn");
+    }
 }
 
 //#endregion
