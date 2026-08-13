@@ -38,7 +38,9 @@ function dialogTemplate(details) {
             <header class="dialog_header">
                 <p>Nr. ${padNumber(details.id)}</p>
                 <h2>${capitalizeLetter(details.name)}</h2>
-                <button aria-label="close dialog" data-id="close-dialog-button" onclick="closeDialog()">X</button>
+                <button aria-label="close dialog" data-id="close-dialog-button" onclick="closeDialog()">
+                    <img src="./assets/img/close.png" alt="close-icon">
+                </button>
             </header>
             <main class="dialog_main">            
                 <div class="dialog_content">
