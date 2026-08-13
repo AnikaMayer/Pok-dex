@@ -160,8 +160,15 @@ main {
     font-size: 1.15rem;
     color: var(--text_highlight);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     border-top-left-radius: 40%;
     border-top-right-radius: 40%;
+    gap: 10px;
+
+    a {
+        font-size: 1.15rem;
+        color: var(--text_highlight);
+    }
 }
