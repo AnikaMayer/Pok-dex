@@ -1,7 +1,7 @@
 function renderPkmCardsTemplate(singlePokemon) {
     return /*html*/ `
         <li>
-            <button data-id="card" aria-label="show Pokemon details" class="pokemon_card" onclick="openDialog(${singlePokemon.id})">
+            <button data-id="card" aria-label="show Pokemon details" class="pokemon_card ${singlePokemon.type[0]}" onclick="openDialog(${singlePokemon.id})">
                 <div data-id="card-image" id="pkm_img_${singlePokemon.id}" class="pkm_img_box"></div>
                 <div class="name_and_Type">
                     <div class="pkm_name">
@@ -123,7 +123,7 @@ function evoCardTemplate(evoData) {
 
 function evoBranchTemplate(stageClass) {
     return /*html*/ `
-        <div class="evo_stage ${stageClass} has_branch">
+        <div class="evo_stage ${stageClass}">
             <div class="evo_branch_wrap"></div>
         </div>
     `;

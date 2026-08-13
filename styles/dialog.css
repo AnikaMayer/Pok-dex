@@ -393,50 +393,39 @@
                             }
                         }
 
-                        .middle:before {
+                        .first:after,
+                        .middle:after {
                             content: "⟩";
                             font-size: 300%;
                             font-weight: 800;
                             color: var(--text_highlight);
                             position: absolute;
-                            left: -30%;
-                            top: 15%;
-                        }
-
-                        .last:before {
-                            content: "⟩";
-                            font-size: 300%;
-                            font-weight: 800;
-                            color: var(--text_highlight);
-                            position: absolute;
-                            left: -30%;
+                            left: 120%;
                             top: 15%;
                         }
                     }
 
                     .evo_chain.branched {
                         flex-direction: column;
+                        gap: 75px;
+                    }
+
+                    .evo_chain.branched .evo_stage {
+                        width: 100%;
+                        justify-content: center;
+                        align-self: center;
+                    }
+
+                    .evo_chain.branched .evo_stage .evo_branch_wrap {
+                        width: 100%;
                         gap: 40px;
+                    }
 
-                        .evo_stage {
-                            justify-content: center;
-                            align-self: center;
-                        }
-
-                        .evo_stage.has_branch {
-                            width: 100%;
-
-                            .evo_branch_wrap {
-                                width: 100%;
-                            }
-                        }
-
-                        .middle:before,
-                        .last:before {
-                            left: 48%;
-                            top: calc(-1 var(--prev-height, 0px) / 2 - -55px);
-                            rotate: 90deg;
-                        }
+                    .evo_chain.branched .first:after,
+                    .evo_chain.branched .middle:after {
+                        left: 49%;
+                        top: 102%;
+                        rotate: 90deg;
                     }
                 }
             }
