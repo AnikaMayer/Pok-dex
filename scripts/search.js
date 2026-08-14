@@ -7,12 +7,12 @@ function checkSearchInput() {
     const searchInputRef = document.getElementById("search_input");
     const searchInput = searchInputRef.value;
     const loadBtn = document.getElementById("load_btn");
-
+    const backBtn = document.getElementById("back_btn");
     toggleSearchElements(searchInput);
-
     if (searchInput.length === 0) {
         renderPkmCards(loadedPkm);
         loadBtn.classList.toggle("hide_load_btn", false);
+        backBtn.classList.toggle("hide_back_btn", true);
     }
 }
 
