@@ -99,8 +99,12 @@ function dialogTemplate(details) {
                 </div>
             </main>
             <footer class="dialog_footer">
-                <button aria-label="show previous Pokemon" data-id="prev-button" id="prev_btn" onclick="goToPrevPokemon()"><</button>
-                <button aria-label="show next Pokemon" data-id="next-button" id="next_btn" onclick="goToNextPokemon()">></button>
+                <button aria-label="show previous Pokemon" data-id="prev-button" id="prev_btn" onclick="goToPrevPokemon()">
+                    <img class="btn_left" src="./assets/img/right-arrow.png" alt="left arrow icon">
+                </button>
+                <button aria-label="show next Pokemon" data-id="next-button" id="next_btn" onclick="goToNextPokemon()">
+                    <img src="./assets/img/right-arrow.png" alt="right arrow icon">
+                </button>
             </footer>
         </section>
     `;

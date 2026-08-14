@@ -8,7 +8,7 @@
     position: fixed;
     top: 100px;
     border: 3px solid rgba(255, 254, 254, 0.486);
-    border-radius: 5%;
+    border-radius: 25px;
     box-shadow: 10px 10px 10px rgb(65, 61, 61);
 
     .dialog_box {
@@ -76,11 +76,11 @@
             .dialog_content {
                 width: 100%;
                 height: fit-content;
-                background-color: rgba(238, 233, 233, 0.895);
+                background-color: var(--dialog_content_bg);
                 background-image: url("../assets/img/pkm_background.png");
                 background-attachment: fixed;
                 background-position: center;
-                background-blend-mode: soft-light;
+                background-blend-mode: color-burn;
                 display: flex;
                 flex-direction: column;
                 gap: 60px;
@@ -253,7 +253,7 @@
                             width: 100%;
                             display: flex;
                             justify-content: space-between;
-                            border-bottom: 2px solid var(--text_span);
+                            border-bottom: 2px solid var(--text_light);
                             font-size: 1.125rem;
 
                             .attribute_title {
@@ -497,6 +497,15 @@
                 color: var(--text_light);
                 font-size: 30px;
                 font-weight: 800;
+
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+
+                .btn_left {
+                    rotate: 180deg;
+                }
             }
 
             button:hover {
