@@ -55,6 +55,7 @@
                     img {
                         width: 70%;
                         height: auto;
+                        filter: drop-shadow(var(--pkm_img_shadow) 9px -1px 4px);
                     }
                 }
 
