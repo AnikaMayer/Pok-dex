@@ -80,7 +80,7 @@
                 background-image: url("../assets/img/pkm_background.png");
                 background-attachment: fixed;
                 background-position: center;
-                background-blend-mode: color-burn;
+                background-blend-mode: overlay;
                 display: flex;
                 flex-direction: column;
                 gap: 60px;
