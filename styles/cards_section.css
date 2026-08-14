@@ -1,8 +1,8 @@
 .pokemon_container {
     width: 100%;
     height: 100%;
-    background-color: rgba(223, 213, 213, 0.8);
-    background-image: url("../assets/img/pkm_background.png");
+    /* background-color: rgba(223, 213, 213, 0.8); */
+    /* background-image: url("../assets/img/pkm_background.png"); */
     background-attachment: fixed;
     background-position: center;
     background-blend-mode: saturation;
@@ -10,13 +10,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 135px clamp(0px, calc(-34.286px + 10.714vw), 120px) 30px;
+    padding: 85px clamp(0px, calc(-34.286px + 10.714vw), 120px) 30px;
     flex: 1;
 
     .pokemon_wrap {
         width: 90%;
         height: 100%;
-        background-color: rgba(238, 233, 233, 0.7);
+        /* background-color: rgba(238, 233, 233, 0.7); */
         border-radius: 20px;
         display: flex;
         justify-content: center;
@@ -38,6 +38,9 @@
                 margin: 0 0.78% 50px;
                 background: none;
                 background-color: var(--pkm_cards_main_color);
+                box-shadow:
+                    0 4px 8px 0 #ffffff,
+                    0 6px 20px 0 #ebe0e38f;
                 border-top-left-radius: 5%;
                 border-top-right-radius: 5%;
                 transition:
@@ -168,7 +171,7 @@
         height: 90px;
         border: none;
         border-radius: 50px;
-        background-color: var(--text_medium);
+        background-color: var(--btn_background);
         box-shadow: 2px 3px 2px 2px var(--btn_shadow);
         display: flex;
         justify-content: center;
@@ -189,7 +192,7 @@
     }
 
     button:hover {
-        background-color: var(--btn_hover_bg);
+        background-color: var(--btn_bg_hover);
         border: 2px solid var(--btn_hover_border);
     }
 

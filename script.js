@@ -20,8 +20,6 @@ let currentPokemon = 0;
 
 //#endregion
 
-// #region init
-
 async function init() {
     showLoadingScreen();
     await Promise.all([getData(currentOffset), getAllPkmNames()]);
@@ -30,8 +28,6 @@ async function init() {
     hideLoadingScreen();
     renderPkmCards(loadedPkm);
 }
-
-//#endregion
 
 // #region renderCards
 

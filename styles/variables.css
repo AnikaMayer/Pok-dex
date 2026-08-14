@@ -6,6 +6,8 @@
     --pkm_cards_main_color: rgba(255, 254, 254, 0.486);
     --evolutions_container_bg: rgba(121, 120, 120);
 
+    --text_headline: white;
+    --text_headline_span: rgba(134, 209, 253, 0.877);
     --text_highlight: rgb(238, 233, 233);
     --text_light: rgb(223, 213, 213);
     --text_span: rgb(173, 172, 172);
@@ -21,8 +23,10 @@
     --dialog_text_medium: rgb(121, 120, 120);
     --dialog_text_dark: rgb(65, 61, 61);
 
+    --btn_bg_hover: rgba(85, 146, 182, 0.877);
+    --btn_background: rgb(207, 152, 174);
     --btn_hover_bg: rgb(40, 39, 39);
-    --btn_hover_border: rgb(167, 164, 164);
+    --btn_hover_border: rgb(235, 229, 229);
     --btn_shadow: rgb(40, 39, 39);
     --btn_shadow_dark: rgb(0, 0, 0);
 

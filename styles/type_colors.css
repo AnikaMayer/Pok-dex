@@ -188,206 +188,203 @@
 
 /* #region hover-effects */
 
-.pokemon_card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-}
+.pokemon_container .pokemon_wrap li {
+    .pokemon_card.grass:hover {
+        transform: translateY(-6px);
+        box-shadow:
+            0 4px 8px 0 #2e3d188f,
+            0 6px 20px 0 #2e3d188f;
 
-.pokemon_card.grass:hover {
-    transform: translateY(-6px);
-    box-shadow:
-        0 4px 8px 0 #2e3d188f,
-        0 6px 20px 0 #2e3d188f;
-
-    .pkm_img_box:hover {
-        background-color: #759b3c70;
+        .pkm_img_box:hover {
+            background-color: #759b3c70;
+        }
     }
-}
 
-.pokemon_card.fire:hover {
-    transform: translateY(-6px);
-    box-shadow:
-        0 4px 8px 0 #80411569,
-        0 6px 20px 0 #80411569;
+    .pokemon_card.fire:hover {
+        transform: translateY(-6px);
+        box-shadow:
+            0 4px 8px 0 #80411569,
+            0 6px 20px 0 #80411569;
 
-    .pkm_img_box {
-        background-color: #d66c2150;
+        .pkm_img_box {
+            background-color: #d66c2150;
+        }
     }
-}
 
-.pokemon_card.water:hover {
-    transform: translateY(-6px);
-    box-shadow:
-        0 4px 8px 0 #326b9181,
-        0 6px 20px 0 #326b9181;
+    .pokemon_card.water:hover {
+        transform: translateY(-6px);
+        box-shadow:
+            0 4px 8px 0 #326b9181,
+            0 6px 20px 0 #326b9181;
 
-    .pkm_img_box {
-        background-color: #4087b654;
+        .pkm_img_box {
+            background-color: #4087b654;
+        }
     }
-}
 
-.pokemon_card.poison:hover {
-    transform: translateY(-6px);
-    box-shadow:
-        0 4px 8px 0 #67457075,
-        0 6px 20px 0 #67457075;
+    .pokemon_card.poison:hover {
+        transform: translateY(-6px);
+        box-shadow:
+            0 4px 8px 0 #67457075,
+            0 6px 20px 0 #67457075;
 
-    .pkm_img_box {
-        background-color: #9666a356;
+        .pkm_img_box {
+            background-color: #9666a356;
+        }
     }
-}
 
-.pokemon_card.flying:hover {
-    transform: translateY(-6px);
-    box-shadow:
-        0 4px 8px 0 #75949c62,
-        0 6px 20px 0 #75949c62;
+    .pokemon_card.flying:hover {
+        transform: translateY(-6px);
+        box-shadow:
+            0 4px 8px 0 #75949c62,
+            0 6px 20px 0 #75949c62;
 
-    .pkm_img_box {
-        background-color: #75949c59;
+        .pkm_img_box {
+            background-color: #75949c59;
+        }
     }
-}
 
-.pokemon_card.bug:hover {
-    transform: translateY(-6px);
-    box-shadow:
-        0 4px 8px 0 #74773077,
-        0 6px 20px 0 #74773077;
+    .pokemon_card.bug:hover {
+        transform: translateY(-6px);
+        box-shadow:
+            0 4px 8px 0 #74773077,
+            0 6px 20px 0 #74773077;
 
-    .pkm_img_box {
-        background-color: #a8ad465b;
+        .pkm_img_box {
+            background-color: #a8ad465b;
+        }
     }
-}
 
-.pokemon_card.normal:hover {
-    transform: translateY(-6px);
-    box-shadow:
-        0 4px 8px 0 #6065669a,
-        0 6px 20px 0 #6065669a;
+    .pokemon_card.normal:hover {
+        transform: translateY(-6px);
+        box-shadow:
+            0 4px 8px 0 #6065669a,
+            0 6px 20px 0 #6065669a;
 
-    .pkm_img_box {
-        background-color: #949c9ea2;
+        .pkm_img_box {
+            background-color: #949c9ea2;
+        }
     }
-}
 
-.pokemon_card.electric:hover {
-    transform: translateY(-6px);
-    box-shadow:
-        0 4px 8px 0 #a781048f,
-        0 6px 20px 0 #a781048f;
+    .pokemon_card.electric:hover {
+        transform: translateY(-6px);
+        box-shadow:
+            0 4px 8px 0 #a781048f,
+            0 6px 20px 0 #a781048f;
 
-    .pkm_img_box {
-        background-color: #ca9f136b;
+        .pkm_img_box {
+            background-color: #ca9f136b;
+        }
     }
-}
 
-.pokemon_card.rock:hover {
-    transform: translateY(-6px);
-    box-shadow:
-        0 4px 8px 0 #a38b21a1,
-        0 6px 20px 0 #a38b21a1;
+    .pokemon_card.rock:hover {
+        transform: translateY(-6px);
+        box-shadow:
+            0 4px 8px 0 #a38b21a1,
+            0 6px 20px 0 #a38b21a1;
 
-    .pkm_img_box {
-        background-color: #a38b216c;
+        .pkm_img_box {
+            background-color: #a38b216c;
+        }
     }
-}
 
-.pokemon_card.ground:hover {
-    transform: translateY(-6px);
-    box-shadow:
-        0 4px 8px 0 #8365129a,
-        0 6px 20px 0 #8365129a;
+    .pokemon_card.ground:hover {
+        transform: translateY(-6px);
+        box-shadow:
+            0 4px 8px 0 #8365129a,
+            0 6px 20px 0 #8365129a;
 
-    .pkm_img_box {
-        background-color: #83651267;
+        .pkm_img_box {
+            background-color: #83651267;
+        }
     }
-}
 
-.pokemon_card.ice:hover {
-    transform: translateY(-6px);
-    box-shadow:
-        0 4px 8px 0 #3fb1d49a,
-        0 6px 20px 0 #3fb1d49a;
+    .pokemon_card.ice:hover {
+        transform: translateY(-6px);
+        box-shadow:
+            0 4px 8px 0 #3fb1d49a,
+            0 6px 20px 0 #3fb1d49a;
 
-    .pkm_img_box {
-        background-color: #51c4e75d;
+        .pkm_img_box {
+            background-color: #51c4e75d;
+        }
     }
-}
 
-.pokemon_card.fighting:hover {
-    transform: translateY(-6px);
-    box-shadow:
-        0 4px 8px 0 #a15e359c,
-        0 6px 20px 0 #a15e359c;
+    .pokemon_card.fighting:hover {
+        transform: translateY(-6px);
+        box-shadow:
+            0 4px 8px 0 #a15e359c,
+            0 6px 20px 0 #a15e359c;
 
-    .pkm_img_box {
-        background-color: #a15e355b;
+        .pkm_img_box {
+            background-color: #a15e355b;
+        }
     }
-}
 
-.pokemon_card.psychic:hover {
-    transform: translateY(-6px);
-    box-shadow:
-        0 4px 8px 0 #b968979c,
-        0 6px 20px 0 #b968979c;
+    .pokemon_card.psychic:hover {
+        transform: translateY(-6px);
+        box-shadow:
+            0 4px 8px 0 #b968979c,
+            0 6px 20px 0 #b968979c;
 
-    .pkm_img_box {
-        background-color: #b9689757;
+        .pkm_img_box {
+            background-color: #b9689757;
+        }
     }
-}
 
-.pokemon_card.ghost:hover {
-    transform: translateY(-6px);
-    box-shadow:
-        0 4px 8px 0 #504168b2,
-        0 6px 20px 0 #504168b2;
+    .pokemon_card.ghost:hover {
+        transform: translateY(-6px);
+        box-shadow:
+            0 4px 8px 0 #504168b2,
+            0 6px 20px 0 #504168b2;
 
-    .pkm_img_box {
-        background-color: #50416862;
+        .pkm_img_box {
+            background-color: #50416862;
+        }
     }
-}
 
-.pokemon_card.dragon:hover {
-    transform: translateY(-6px);
-    box-shadow:
-        0 4px 8px 0 #813ad3ab,
-        0 6px 20px 0 #813ad3ab;
+    .pokemon_card.dragon:hover {
+        transform: translateY(-6px);
+        box-shadow:
+            0 4px 8px 0 #813ad3ab,
+            0 6px 20px 0 #813ad3ab;
 
-    .pkm_img_box {
-        background-color: #813ad356;
+        .pkm_img_box {
+            background-color: #813ad356;
+        }
     }
-}
 
-.pokemon_card.dark:hover {
-    transform: translateY(-6px);
-    box-shadow:
-        0 4px 8px 0 #494646bb,
-        0 6px 20px 0 #494646bb;
+    .pokemon_card.dark:hover {
+        transform: translateY(-6px);
+        box-shadow:
+            0 4px 8px 0 #494646bb,
+            0 6px 20px 0 #494646bb;
 
-    .pkm_img_box {
-        background-color: #4946469c;
+        .pkm_img_box {
+            background-color: #4946469c;
+        }
     }
-}
 
-.pokemon_card.steel:hover {
-    transform: translateY(-6px);
-    box-shadow:
-        0 4px 8px 0 #859996d7,
-        0 6px 20px 0 #859996d7;
+    .pokemon_card.steel:hover {
+        transform: translateY(-6px);
+        box-shadow:
+            0 4px 8px 0 #859996d7,
+            0 6px 20px 0 #859996d7;
 
-    .pkm_img_box {
-        background-color: #859996a8;
+        .pkm_img_box {
+            background-color: #859996a8;
+        }
     }
-}
 
-.pokemon_card.fairy:hover {
-    transform: translateY(-6px);
-    box-shadow:
-        0 4px 8px 0 #b38397c4,
-        0 6px 20px 0 #b38397c4;
+    .pokemon_card.fairy:hover {
+        transform: translateY(-6px);
+        box-shadow:
+            0 4px 8px 0 #b38397c4,
+            0 6px 20px 0 #b38397c4;
 
-    .pkm_img_box {
-        background-color: #cf9db277;
+        .pkm_img_box {
+            background-color: #cf9db277;
+        }
     }
 }
 
