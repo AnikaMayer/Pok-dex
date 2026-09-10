@@ -159,6 +159,8 @@
         padding: 10px;
 
         a {
+            gap: 8px;
+
             img {
                 width: auto;
                 height: 50px;
