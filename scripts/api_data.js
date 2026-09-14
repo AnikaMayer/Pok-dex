@@ -2,7 +2,9 @@
 
 // get url for every pokemon leading to more info
 async function getData(offset) {
-    const response = await fetch(`${POKEAPI}/pokemon?limit=20&offset=${offset}`);
+    const response = await fetch(
+        `${POKEAPI}/pokemon?limit=20&offset=${offset}`,
+    );
     const responseFromJson = await response.json();
 
     for (let j = 0; j < responseFromJson.results.length; j++) {
@@ -17,7 +19,8 @@ async function getPkmInfo(listUrl) {
         const respFromJson = await resp.json();
         loadedInfo.push(respFromJson);
 
-        const pkmImg = respFromJson.sprites.other["official-artwork"].front_default;
+        const pkmImg =
+            respFromJson.sprites.other["official-artwork"].front_default;
         const pkmTypes = getTypes(respFromJson);
 
         const pokemonObject = createPkmObj(respFromJson, pkmImg, pkmTypes);
@@ -83,7 +86,15 @@ async function getMoreDetails(singlePokemon) {
     const pkmDescr = getDescr(respFromJson);
     const pkmCtgry = getCtgry(respFromJson);
     const evoChain = await getEvoChain(respFromJson);
-    const detailsObj = createDetailsObj(pkmData, pkmDescr, pkmImg, pkmTypes, pkmCtgry, pkmAblts, evoChain);
+    const detailsObj = createDetailsObj(
+        pkmData,
+        pkmDescr,
+        pkmImg,
+        pkmTypes,
+        pkmCtgry,
+        pkmAblts,
+        evoChain,
+    );
     pkmDetails.push(detailsObj);
 }
 
@@ -96,18 +107,23 @@ function getTypes(pkmIndex) {
 
 function getAblty(pkmIndex) {
     const pkmAblts = [];
-    pkmIndex.abilities.forEach((pkmAbility) => pkmAblts.push(pkmAbility.ability.name));
+    pkmIndex.abilities.forEach((pkmAbility) =>
+        pkmAblts.push(pkmAbility.ability.name),
+    );
     return pkmAblts;
 }
 
 function getDescr(respFromJson) {
-    const descr = respFromJson.flavor_text_entries.find((element) => element.language.name === "en").flavor_text;
+    const descr = respFromJson.flavor_text_entries.find(
+        (element) => element.language.name === "en",
+    ).flavor_text;
 
     return descr.replace(/\f/g, " ").replace(/\n/g, " ");
 }
 
 function getCtgry(respFromJson) {
-    return respFromJson.genera.find((element) => element.language.name === "en").genus;
+    return respFromJson.genera.find((element) => element.language.name === "en")
+        .genus;
 }
 
 // get Details for evoChain-array -> fetch from evo-url, create 3 array for every evo-stage
@@ -134,11 +150,20 @@ function createEvoChainArray(firstStage, secondStage, thirdStage) {
 }
 
 function getStats(statName, pkmData) {
-    return pkmData.stats.find((element) => element.stat.name === statName).base_stat;
+    return pkmData.stats.find((element) => element.stat.name === statName)
+        .base_stat;
 }
 
 // object to push into Array
-function createDetailsObj(pkmData, pkmDescr, pkmImg, pkmTypes, pkmCtgry, pkmAblts, evoChain) {
+function createDetailsObj(
+    pkmData,
+    pkmDescr,
+    pkmImg,
+    pkmTypes,
+    pkmCtgry,
+    pkmAblts,
+    evoChain,
+) {
     return {
         description: pkmDescr,
         name: pkmData.name,
@@ -161,6 +186,12 @@ function createDetailsObj(pkmData, pkmDescr, pkmImg, pkmTypes, pkmCtgry, pkmAblt
     };
 }
 
+async function resolveDefaultVariety(speciesName) {
+    const resp = await fetch(`${POKEAPI}/pokemon-species/${speciesName}`);
+    const data = await resp.json();
+    return data.varieties.find((v) => v.is_default).pokemon.name;
+}
+
 //#endregion
 
 // #region getGlobalData
@@ -180,7 +211,8 @@ async function getGlobalPkmInfo(matches) {
         const respFromJson = await resp.json();
         loadedInfo.push(respFromJson);
 
-        const pkmImg = respFromJson.sprites.other["official-artwork"].front_default;
+        const pkmImg =
+            respFromJson.sprites.other["official-artwork"].front_default;
         const pkmTypes = getTypes(respFromJson);
 
         const pokemonObject = createPkmObj(respFromJson, pkmImg, pkmTypes);

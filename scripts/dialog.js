@@ -4,7 +4,9 @@ async function openDialog(pkmId) {
     document.body.classList.add("overscroll_stop");
     const displayedPkm = getDisplayedPkm();
     currentPokemon = displayedPkm.findIndex((pkm) => pkm.id === pkmId);
-    const singlePokemon = loadedPkm.find((pkm) => pkm.id === pkmId) || searchedGlobal.find((pkm) => pkm.id === pkmId);
+    const singlePokemon =
+        loadedPkm.find((pkm) => pkm.id === pkmId) ||
+        searchedGlobal.find((pkm) => pkm.id === pkmId);
     await getMoreDetails(singlePokemon);
     const details = pkmDetails.find((pkmDetail) => pkmDetail.id === pkmId);
     renderDialogContent(details);
@@ -35,7 +37,10 @@ function toggleDialogButtons(displayedPkm) {
     const prevBtn = document.getElementById("prev_btn");
     const nextBtn = document.getElementById("next_btn");
     prevBtn.classList.toggle("hide_prev_btn", currentPokemon <= 0);
-    nextBtn.classList.toggle("hide_next_btn", currentPokemon >= displayedPkm.length - 1);
+    nextBtn.classList.toggle(
+        "hide_next_btn",
+        currentPokemon >= displayedPkm.length - 1,
+    );
 }
 
 //#endregion
@@ -218,7 +223,8 @@ async function renderSingleEvo(evoName, stageClass, evoBox) {
 
 async function renderBranchEvo(evoStage, stageClass, evoBox) {
     evoBox.innerHTML += evoBranchTemplate(stageClass);
-    const branchWrap = evoBox.lastElementChild.querySelector(".evo_branch_wrap");
+    const branchWrap =
+        evoBox.lastElementChild.querySelector(".evo_branch_wrap");
     for (let y = 0; y < evoStage.length; y++) {
         await renderBranchCard(evoStage[y], branchWrap);
     }
@@ -232,12 +238,13 @@ async function renderBranchCard(evoName, branchWrap) {
 }
 
 async function getEvoData(evoName) {
-    let evoData = loadedPkm.find((pkm) => pkm.name === evoName);
+    const resolvedName = await resolveDefaultVariety(evoName);
+    let evoData = loadedPkm.find((pkm) => pkm.name === resolvedName);
 
     if (evoData) {
         return evoData;
     } else {
-        return await searchGlobalPkm(evoName);
+        return await searchGlobalPkm(resolvedName);
     }
 }
 
